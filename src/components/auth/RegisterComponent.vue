@@ -10,7 +10,7 @@
       <p>JMBG: <input type="text" v-model="korisnik.jmbg"></p>
       <p>pozicija_trenutna_id: <input type="text" v-model="korisnik.pozicija_trenutna_id"></p>
       <p>lokacija_trenutna_id: <input type="text" v-model="korisnik.lokacija_trenutna_id"></p>
-      <button @click="callRegister">Login</button>
+      <button class="btn btn-success btn-large" @click="callRegister">Register</button>
 
 
 
@@ -18,7 +18,7 @@
 </template>
 
 <script>
-import loginService from '../../services/authentication.service';
+import authenticationService from '../../services/authentication.service';
 
 export default {
   data: function (){
@@ -38,7 +38,7 @@ export default {
   },
   methods: {
     callRegister: function () {
-      loginService.register(this.korisnik)
+      authenticationService.register(this.korisnik)
       .then((res) => {
         console.log(res);
       })

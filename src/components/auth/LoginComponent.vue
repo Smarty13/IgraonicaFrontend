@@ -3,13 +3,13 @@
       <h3>Login</h3>
       <p>Email: <input type="text" v-model="korisnik.email"></p>
       <p>Password: <input type="password" v-model="korisnik.password"></p>
-      <button @click="callLogin">Login</button>
+      <button class="btn btn-success btn-large" @click="callLogin">Login</button>
 
   </div>
 </template>
 
 <script>
-import loginService from '../../services/authentication.service';
+import authenticationService from '../../services/authentication.service';
 export default {
   data: function () {
     return {
@@ -22,9 +22,9 @@ export default {
 
   methods: {
     callLogin: function () {
-      loginService.login(this.korisnik)
+      authenticationService.login(this.korisnik)
       .then((res)=> {
-        loginService.setToken(res['data']['access_token']);
+        authenticationService.setToken(res['data']['access_token']);
         this.$router.go('/');
       })
       .catch((err)=> {
