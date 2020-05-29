@@ -7,6 +7,9 @@ export default {
     login(data) {
         return axios.post(`${constants.AUTH_API}/login`,data);
     },
+    register(data) {
+        return axios.post(`${constants.AUTH_API}/register`, data);
+    },
     setToken(token) {
         localStorage.setItem('token', token);
     },
