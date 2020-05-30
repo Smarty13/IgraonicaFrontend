@@ -10,6 +10,10 @@ export default {
     register(data) {
         return axios.post(`${constants.AUTH_API}/register`, data);
     },
+    logout() {
+        localStorage.removeItem('token');
+        return axios.post(`${constants.AUTH_API}/logout`);
+    },
     setToken(token) {
         localStorage.setItem('token', token);
     },
