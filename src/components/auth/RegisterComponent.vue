@@ -4,26 +4,50 @@
 
       <h3 class="display-4 mb-5">Novi zaposleni</h3>
       <div class="container ml-3">
-        <p>Ime: <input type="text" v-model="korisnik.ime"></p>
-        <p>Prezime: <input type="text" v-model="korisnik.prezime"></p>
-        <p>Email: <input type="text" v-model="korisnik.email"></p>
-        <p>Password: <input type="password" v-model="korisnik.password"></p>
-        <p>Confirm password: <input type="password" v-model="korisnik.confirmPassword"></p>
-        <p>Broj telefona: <input type="text" v-model="korisnik.broj_telefona"></p>
-        <p>JMBG: <input type="text" v-model="korisnik.jmbg"></p>
-        <p>Pozicija:
-          <select v-model="korisnik.pozicija_trenutna_id">
+        <div class="row mb-2">
+          <span class="col-md-4">Ime:</span>
+          <input class="col-md-8 form-control" type="text" v-model="korisnik.ime">
+        </div>
+        <div class="row mb-2">
+          <span class="col-md-4">Prezime:</span> 
+          <input class="col-md-8 form-control" type="text" v-model="korisnik.prezime">
+        </div>
+        <div class="row mb-2">
+          <span class="col-md-4">Email:</span> 
+          <input class="col-md-8 form-control" type="text" v-model="korisnik.email">
+        </div>
+        <div class="row mb-2">
+          <span class="col-md-4">Šifra:</span> 
+          <input class="col-md-8 form-control" type="password" v-model="korisnik.password">
+        </div>
+        <div class="row mb-2">
+          <span class="col-md-4">Potvrda šifre:</span> 
+          <input class="col-md-8 form-control" type="password" v-model="korisnik.confirmPassword">
+        </div>
+        <div class="row mb-2">
+          <span class="col-md-4">Broj telefona:</span> 
+          <input class="col-md-8 form-control" type="text" v-model="korisnik.broj_telefona">
+        </div>
+        <div class="row mb-2">
+          <span class="col-md-4">JMBG:</span> 
+          <input class="col-md-8 form-control" type="text" v-model="korisnik.jmbg">
+        </div>
+        <div class="row mb-2">
+          <span class="col-md-4">Pozicija: </span>
+          <select class="col-md-8 form-control" v-model="korisnik.pozicija_trenutna_id">
             <option v-for="p in computedPozicije" :key="p.id"
             v-bind:value="p.id"> {{p.naziv}} </option>
           </select>
-        </p>
-        <p>Lokacija: 
-          <select v-model="korisnik.lokacija_trenutna_id">
+        </div>
+        <div class="row mb-5">
+          <span class="col-md-4">Lokacija: </span>
+          <select class="col-md-6 form-control" v-model="korisnik.lokacija_trenutna_id">
             <option v-for="l in computedLokacije" :key="l.id"
-            v-bind:value="l.id"> {{l.naziv}} </option>
+            v-bind:value="l.id"> {{l.naziv}}, {{l.grad.naziv}} </option>
           </select>
-        </p>
-        <button class="btn btn-success btn-large float-right mr-5" @click="callRegister">Register</button>
+        </div>
+        
+        <button class="btn btn-success btn-large col-md-6" @click="callRegister">Register</button>
       </div>
     </div>
   </div>
