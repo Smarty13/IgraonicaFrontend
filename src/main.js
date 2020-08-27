@@ -10,7 +10,7 @@ import VueToastr from "vue-toastr";
 
 import LoginComponent from './components/auth/LoginComponent';
 import RegisterComponent from './components/auth/RegisterComponent';
-
+import SveLokacijeComponent from './components/lokacije/SveLokacijeComponent';
 Vue.config.productionTip = false;
 
 
@@ -22,7 +22,8 @@ const router = new VueRouter({
   mode: 'history',
   routes: [
     { path: '/login', component: LoginComponent },
-    { path: '/register', component: RegisterComponent }
+    { path: '/register', component: RegisterComponent },
+    { path: '/lokacije', component: SveLokacijeComponent}
   ]
 });
 

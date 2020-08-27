@@ -104,6 +104,7 @@ export default {
     lokacijaService.getAllLokacija()
     .then((res) => {
       this.lokacije = res['data'];
+      console.log(res);
       pozicijaService.getAllPozicija()
       .then((res) => {
         this.pozicije = res['data'];

@@ -7,5 +7,8 @@ export default {
 
     getAllLokacija() {
         return axios.get(`${constants.API}/unpaginated-lokacija`);
+    },
+    deleteLokacija(id) {
+        return axios.delete(`${constants.API}/lokacija/${id}`);
     }
 }
