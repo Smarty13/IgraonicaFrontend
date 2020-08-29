@@ -73,8 +73,5 @@ export default{
 }
 </script>
 <style>
-.aleksa-gej {
-    background-color: #000;
-}
 
 </style>
