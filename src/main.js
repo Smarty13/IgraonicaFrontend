@@ -11,6 +11,8 @@ import VueToastr from "vue-toastr";
 import LoginComponent from './components/auth/LoginComponent';
 import RegisterComponent from './components/auth/RegisterComponent';
 import SveLokacijeComponent from './components/lokacije/SveLokacijeComponent';
+import SviSportoviComponent from './components/sport/SviSportoviComponent';
+
 Vue.config.productionTip = false;
 
 
@@ -23,7 +25,8 @@ const router = new VueRouter({
   routes: [
     { path: '/login', component: LoginComponent },
     { path: '/register', component: RegisterComponent },
-    { path: '/lokacije', component: SveLokacijeComponent}
+    { path: '/lokacije', component: SveLokacijeComponent},
+    { path: '/sportovi', component: SviSportoviComponent},
   ]
 });
 
