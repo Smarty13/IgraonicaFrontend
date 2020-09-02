@@ -11,6 +11,11 @@ import VueToastr from "vue-toastr";
 import LoginComponent from './components/auth/LoginComponent';
 import RegisterComponent from './components/auth/RegisterComponent';
 import SveLokacijeComponent from './components/lokacije/SveLokacijeComponent';
+import SvaPicaComponent from './components/pice/SvaPicaComponent';
+import DodajPiceComponent from './components/pice/DodajPiceComponent';
+import IzmeniPiceComponent from './components/pice/IzmeniPiceComponent';
+import PiceComponent from './components/pice/PiceComponent';
+
 Vue.config.productionTip = false;
 
 
@@ -23,7 +28,11 @@ const router = new VueRouter({
   routes: [
     { path: '/login', component: LoginComponent },
     { path: '/register', component: RegisterComponent },
-    { path: '/lokacije', component: SveLokacijeComponent}
+    { path: '/lokacije', component: SveLokacijeComponent},
+    { path: '/pica', component: SvaPicaComponent },
+    { path: '/pica/add', component: DodajPiceComponent },
+    { path: '/pica/edit/:id', component: IzmeniPiceComponent},
+    { path: '/pica/:id', component: PiceComponent }
   ]
 });
 
