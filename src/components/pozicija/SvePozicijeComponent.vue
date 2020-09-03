@@ -51,7 +51,6 @@ export default {
             .catch((err) => {
                 this.$toastr.e('Pozicija nije obrisana', "Brisanje neuspesno");
             });
-            this.$router.push('/pozicije');
         }
     },
     created() {
