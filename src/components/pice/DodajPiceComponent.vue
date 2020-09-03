@@ -1,7 +1,7 @@
 <template>
     <div class="d-flex justify-content-center" style="height:100%">
         <div class="w-md-50">
-            <div >
+            <div>
                 <div class="header">
                     <h5 class="display-4 mb-5">Dadaj pice</h5>
                 </div>
@@ -40,7 +40,8 @@ export default {
         dodaj() {
             piceService.addPice(this.pice)
             .then((res) => {
-                this.$toastr.s ('Pice ${res.data.Naziv_Pica} je dodato.', "Pice dodato!")
+                this.$toastr.s ('Pice ${res.data.Naziv_Pica} je dodato.', "Pice dodato!");
+                this.$router.go('/');
             })
             .catch((err) => {
                 this.$toastr.e(err.message, "Greska");

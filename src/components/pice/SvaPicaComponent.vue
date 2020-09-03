@@ -16,7 +16,7 @@
                 </tr>
             </thead>
             <tbody>
-                <tr v-for=" (p) in computedPica" :key="p.id">
+                <tr v-for="p in computedPica" :key="p.id">
                     <th scope="row"> {{ p.id }} </th>
                     <td>{{ p.Naziv_Pica }}</td>
                     <td>{{ p.Cena_Pica }}</td>

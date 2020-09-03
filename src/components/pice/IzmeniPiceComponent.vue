@@ -1,7 +1,7 @@
 <template>
     <div class="d-flex justify-content-center" style="height:100%">
         <div class="w-md-50">
-            <div >
+            <div>
                 <div class="header">
                     <h5 class="display-4 mb-5">Izmeni pice</h5>
                 </div>
@@ -39,8 +39,8 @@ export default {
         izmeni() {
             piceService.editPice(this.pice, this.$route.params.id)
             .then((res) => {
-                this.$toastr.s('Pice ${res.data.Naziv_pica} je izmenjeno.', "Pice izmenjeno!");
-                console.log(res);
+                this.$toastr.s('Pice je izmenjeno.', "Pice izmenjeno!");
+                this.$router.go('/');
             })
             .catch((err) => {
                 this.$toastr.e(err.message, "Greska");
