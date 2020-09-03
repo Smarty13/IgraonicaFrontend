@@ -59,7 +59,7 @@ export default{
         lokacijaService.getAllLokacija()
         .then((res)=>{
             this.lokacije = res['data'];
-            console.log(res['data']);
+            
         })
         .catch((err)=>{
             console.log(err);

@@ -52,7 +52,6 @@ export default{
         gradService.getAllGrad()
         .then((res)=>{
             this.gradovi = res['data'];
-            console.log(res['data']);
         })
         .catch((err)=>{
             console.log(err);

@@ -50,7 +50,7 @@ export default{
         sportService.getAllSport()
         .then((res)=>{
             this.sportovi = res['data'];
-            console.log(res['data']);
+            
         })
         .catch((err)=>{
             console.log(err);

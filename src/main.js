@@ -11,8 +11,12 @@ import VueToastr from "vue-toastr";
 import LoginComponent from './components/auth/LoginComponent';
 import RegisterComponent from './components/auth/RegisterComponent';
 import SveLokacijeComponent from './components/lokacije/SveLokacijeComponent';
+import LokacijaComponent from './components/lokacije/LokacijaComponent';
 import SviSportoviComponent from './components/sport/SviSportoviComponent';
+import SportComponent from './components/sport/SportComponent';
 import SviGradoviComponent from './components/grad/SviGradoviComponent';
+import GradComponent from './components/grad/GradComponent';
+
 
 Vue.config.productionTip = false;
 
@@ -27,8 +31,12 @@ const router = new VueRouter({
     { path: '/login', component: LoginComponent },
     { path: '/register', component: RegisterComponent },
     { path: '/lokacije', component: SveLokacijeComponent},
+    { path: '/lokacije/:id', component: LokacijaComponent},
     { path: '/sportovi', component: SviSportoviComponent},
-    { path: '/gradovi', component: SviGradoviComponent}
+    { path: '/sportovi/:id', component: SportComponent},
+    { path: '/gradovi', component: SviGradoviComponent},
+    { path: '/gradovi/:id', component: GradComponent}
+
   ]
 });
 
