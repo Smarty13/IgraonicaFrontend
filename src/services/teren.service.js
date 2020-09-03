@@ -6,7 +6,7 @@ export default {
 
 
     getAllTeren() {
-        return axios.get(`${constants.API}/unpaginated-teren`);
+        return axios.get(`${constants.API}/teren`);
     },
     deleteTeren(id) {
         return axios.delete(`${constants.API}/teren/${id}`);
