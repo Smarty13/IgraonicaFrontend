@@ -13,6 +13,11 @@ import RegisterComponent from './components/auth/RegisterComponent';
 import SveLokacijeComponent from './components/lokacije/SveLokacijeComponent';
 import SviSportoviComponent from './components/sport/SviSportoviComponent';
 import SviGradoviComponent from './components/grad/SviGradoviComponent';
+import SvePozicijeComponent from './components/pozicija/SvePozicijeComponent';
+import DodajPozicijuComponent from './components/pozicija/DodajPozicijuComponent';
+import IzmeniPozicijuComponent from './components/pozicija/IzmeniPozicijuComponent';
+import PozicijaComponent from './components/pozicija/PozicijaComponent';
+
 
 Vue.config.productionTip = false;
 
@@ -28,7 +33,11 @@ const router = new VueRouter({
     { path: '/register', component: RegisterComponent },
     { path: '/lokacije', component: SveLokacijeComponent},
     { path: '/sportovi', component: SviSportoviComponent},
-    { path: '/gradovi', component: SviGradoviComponent}
+    { path: '/gradovi', component: SviGradoviComponent},
+    { path: '/pozicije', component: SvePozicijeComponent },
+    { path: '/pozicije/add', component: DodajPozicijuComponent },
+    { path: '/pozicije/edit/:id', component: IzmeniPozicijuComponent },
+    { path: '/pozicije/:id', component: PozicijaComponent }
   ]
 });
 
