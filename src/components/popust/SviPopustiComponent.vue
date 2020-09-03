@@ -56,7 +56,6 @@ export default {
             .catch((err) => {
                 this.$toastr.e('Popust nije obrisan', "Brisanje neuspesno");
             });
-            this.$router.push('/popusti');
         }
     },
     created() {
