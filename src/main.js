@@ -13,6 +13,7 @@ import RegisterComponent from './components/auth/RegisterComponent';
 import SveLokacijeComponent from './components/lokacije/SveLokacijeComponent';
 import SviSportoviComponent from './components/sport/SviSportoviComponent';
 import SviTereniComponent from './components/teren/SviTereniComponent';
+import SviGradoviComponent from './components/grad/SviGradoviComponent';
 
 Vue.config.productionTip = false;
 
@@ -28,7 +29,8 @@ const router = new VueRouter({
     { path: '/register', component: RegisterComponent },
     { path: '/lokacije', component: SveLokacijeComponent},
     { path: '/sportovi', component: SviSportoviComponent},
-    { path: '/tereni', component: SviTereniComponent}
+    { path: '/tereni', component: SviTereniComponent},
+    { path: '/gradovi', component: SviGradoviComponent},
   ]
 });
 
