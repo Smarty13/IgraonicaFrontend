@@ -59,7 +59,6 @@ export default{
             .catch((err) => {
                 this.$toastr.e('Pice nije obrisano', 'Brisanje neuspesno');
             });
-            this.$router.push('/pica');
         }
 
     },
