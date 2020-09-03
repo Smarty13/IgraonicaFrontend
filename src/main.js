@@ -13,6 +13,11 @@ import RegisterComponent from './components/auth/RegisterComponent';
 import SveLokacijeComponent from './components/lokacije/SveLokacijeComponent';
 import SviSportoviComponent from './components/sport/SviSportoviComponent';
 import SviGradoviComponent from './components/grad/SviGradoviComponent';
+import SviPopustiComponent from './components/popust/SviPopustiComponent';
+import DodajPopustComponent from './components/popust/DodajPopustComponent';
+import IzmeniPopustComponent from './components/popust/IzmeniPopustComponent';
+import PopustComponent from './components/popust/PopustComponent';
+
 
 Vue.config.productionTip = false;
 
@@ -28,7 +33,11 @@ const router = new VueRouter({
     { path: '/register', component: RegisterComponent },
     { path: '/lokacije', component: SveLokacijeComponent},
     { path: '/sportovi', component: SviSportoviComponent},
-    { path: '/gradovi', component: SviGradoviComponent}
+    { path: '/gradovi', component: SviGradoviComponent},
+    { path: '/popusti', component: SviPopustiComponent },
+    { path: '/popusti/add', component: DodajPopustComponent },
+    { path: '/popusti/edit/:id', component: IzmeniPopustComponent },
+    { path: '/popusti/:id', component: PopustComponent }
   ]
 });
 
