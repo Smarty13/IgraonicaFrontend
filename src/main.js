@@ -12,8 +12,8 @@ import LoginComponent from './components/auth/LoginComponent';
 import RegisterComponent from './components/auth/RegisterComponent';
 import SveLokacijeComponent from './components/lokacije/SveLokacijeComponent';
 import SviSportoviComponent from './components/sport/SviSportoviComponent';
-import SviTereniComponent from './components/teren/SviTereniComponent';
 import SviGradoviComponent from './components/grad/SviGradoviComponent';
+import SviTereniComponent from './components/teren/SviTereniComponent';
 
 Vue.config.productionTip = false;
 

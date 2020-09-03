@@ -54,6 +54,7 @@ export default{
         terenService.getAllTeren()
         .then((res)=>{
             this.tereni = res['data'];
+            console.log('hi')
             console.log(res['data']);
         })
         .catch((err)=>{

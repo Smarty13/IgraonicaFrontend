@@ -19,6 +19,9 @@ export default {
     },
     getToken() {
         localStorage.getItem('token');
+    },
+    me() {
+        return axios.post(`${constants.AUTH_API}/me`);
     }
 
 
