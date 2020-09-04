@@ -1,5 +1,8 @@
 <template>
     <div class="container">
+        <p></p>
+        <button class="btn btn-secondary" @click="dodajSport">Dodaj sport</button>
+        <p></p>
         <table class="table text-center table-hover">
             <thead class="thead-dark">
                 <tr>
@@ -32,8 +35,11 @@ export default{
         }
     },
     methods:{
+        dodajSport(){
+            this.$router.push('/dodajSport');
+        },
         izmeniSport(id) {
-
+            this.$router.push('/sportovi/edit/'+id);
         },
         obrisiSport(id) {
             sportService.deleteSport(id)
