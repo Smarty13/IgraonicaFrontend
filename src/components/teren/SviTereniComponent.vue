@@ -1,5 +1,5 @@
 <template>
-    <div class="container">
+    <div v-if="teren" class="container">
         <table class="table text-center table-hover">
             <thead class="thead-dark">
                 <tr>
