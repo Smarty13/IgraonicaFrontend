@@ -20,6 +20,16 @@ export default {
     return axios.put(`${constants.API}/user/${id}`, user, id);
   },
 
+  getByLokacijaId(id) {
+    return axios.get(`${constants.API}/user/lokacija/${id}`);
+  },
+  getAllGrad() {
+    return axios.get(`${constants.API}/grad`);
+  },
+  getAllLokacijaByGradId(id) {
+    return axios.get(`${constants.API}/lokacija/grad/${id}`);
+  },
+
   /*    fireUser(id,lokacija_id, pozicija_id) {
         return axios.patch(`${constants.API}/user/${id}`,)*/
 };

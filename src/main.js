@@ -10,6 +10,7 @@ import LoginComponent from "./components/auth/LoginComponent";
 import RegisterComponent from "./components/auth/RegisterComponent";
 import SveLokacijeComponent from "./components/lokacije/SveLokacijeComponent";
 import UserComponent from "./components/user/UserComponent";
+import UserLokacija from "./components/user/UserFindByLokacijaComponenet";
 
 Vue.config.productionTip = false;
 
@@ -24,6 +25,7 @@ const router = new VueRouter({
     { path: "/register", component: RegisterComponent },
     { path: "/lokacije", component: SveLokacijeComponent },
     { path: "/user/:id", component: UserComponent },
+    { path: "/user/lokacija", component: UserLokacija },
   ],
 });
 
