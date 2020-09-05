@@ -9,7 +9,6 @@
       <p class="card-text">Kvadratura: {{ lokacija.kvadratura }}</p>
       
       <a href="#" class="btn btn-primary" @click="izmeniLokaciju(lokacija.id)">Izmeni</a>
-      <a href="#" class="btn btn-warning" @click="obrisiLokaciju(lokacija.id)">Fire</a>
     </div>
   </div>
 </template>
@@ -27,7 +26,7 @@ export default{
     },
     methods:{
         izmeniLokaciju(id) {
-
+            this.$router.push('/lokacije/edit/'+id);
         },
         obrisiLokaciju(id) {
             lokacijaService.deleteLokacija(id)
