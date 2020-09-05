@@ -25,7 +25,8 @@ export default {
       authenticationService.login(this.korisnik)
       .then((res)=> {
         authenticationService.setToken(res['data']['access_token']);
-        this.$router.go('/');
+        authenticationService.setUser(res['data']['user']);
+        this.$router.push('/');
       })
       .catch((err)=> {
         console.log(err);

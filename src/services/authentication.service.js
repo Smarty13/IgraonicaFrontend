@@ -22,8 +22,13 @@ export default {
     },
     me() {
         return axios.post(`${constants.AUTH_API}/me`);
+    },
+    setUser(user) {
+        localStorage.setItem('user', JSON.stringify(user));
+    },
+    getUser() {
+        return JSON.parse(localStorage.getItem('user'));
     }
-
 
 
 }
