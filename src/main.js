@@ -40,6 +40,9 @@ import DodajPozicijuComponent from './components/pozicija/DodajPozicijuComponent
 import IzmeniPozicijuComponent from './components/pozicija/IzmeniPozicijuComponent';
 import PozicijaComponent from './components/pozicija/PozicijaComponent';
 
+import radiULokacijiGuard from './guards/radiULokaciji.guard';
+import jePoslovodjaGuard from './guards/jePoslovodja.guard';
+
 Vue.config.productionTip = false;
 
 
@@ -50,10 +53,10 @@ Vue.use(VueToastr);
 const router = new VueRouter({
   mode: 'history',
   routes: [
-    { path: '/login', component: LoginComponent },
-    { path: '/register', component: RegisterComponent },
+    { path: '/login', component: LoginComponent, meta: { windowRedirectAfter: true } },
+    { path: '/register', component: RegisterComponent, beforeEnter: jePoslovodjaGuard },
     { path: '/lokacije', component: SveLokacijeComponent},
-    { path: '/lokacije/:id', component: LokacijaComponent},
+    { path: '/lokacije/:id', component: LokacijaComponent, beforeEnter: radiULokacijiGuard},
     { path: '/dodajLokaciju', component: DodajLokacijuComponent},
     { path: '/lokacije/edit/:id', component: IzmeniLokacijuComponent},
     { path: '/sportovi', component: SviSportoviComponent},

@@ -11,14 +11,17 @@ export default {
         return axios.post(`${constants.AUTH_API}/register`, data);
     },
     logout() {
-        localStorage.removeItem('token');
-        return axios.post(`${constants.AUTH_API}/logout`);
+        return axios.post(`${constants.AUTH_API}/logout`)
+        .then((res) => {
+            localStorage.removeItem('token');
+            localStorage.removeItem('user');
+        })
     },
     setToken(token) {
         localStorage.setItem('token', token);
     },
     getToken() {
-        localStorage.getItem('token');
+        return localStorage.getItem('token');
     },
     me() {
         return axios.post(`${constants.AUTH_API}/me`);
