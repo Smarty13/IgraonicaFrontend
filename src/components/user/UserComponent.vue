@@ -1,28 +1,41 @@
 <template>
-  <div class="d-flex justify-content-center" style="height:100%">
+  <div class="d-flex justify-content-center" style="height: 100%">
     <div class="card bg-dark mb-3" v-if="user && lokacija && pozicija && grad">
-      <div class="text-justify card-header text-warning">{{ user.prezime }} {{ user.ime }}</div>
+      <div class="text-justify card-header text-warning">
+        {{ user.prezime }} {{ user.ime }}
+      </div>
       <div class="card-body">
         <h5 class="card-title text-warning">{{ pozicija.naziv }}</h5>
         <p class="card-text text-white">e-mail: {{ user.email }}</p>
-        <p class="card-text text-white">verifikovan datuma: {{ user.email_verified_at }}</p>
+        <p class="card-text text-white">
+          verifikovan datuma: {{ user.email_verified_at }}
+        </p>
         <p class="card-text text-white">lokacija: {{ lokacija.naziv }}</p>
         <p class="card-text text-white">deo grada: {{ lokacija.deo_grada }}</p>
         <p class="card-text text-white">grad: {{ grad.naziv }}</p>
         <p class="card-text text-white">telefon: {{ user.broj_telefona }}</p>
         <p class="card-text text-white">jmbg: {{ user.jmbg }}</p>
         <p class="card-text text-white">ID: {{ this.$route.params.id }}</p>
-        <a href="#" @click="showModal = true" class="btn btn-warning mr-5">Edit</a>
-
+        <a href="#" @click="showModal = true" class="btn btn-warning mr-5"
+          >Edit</a
+        >
         <a href="#" class="btn btn-secondary">Fire</a>
       </div>
-      <UserEditModal :showMe="showModal" :user="user" @closeModal="hideModal()" />
+      <UserEditModal
+        :showMe="showModal"
+        :user="user"
+        @closeModal="hideModal()"
+      />
     </div>
   </div>
 </template>
 <script>
 import UserEditModal from "@/components/user/UserEditModalComponent.vue";
 import userService from "../../services/user.service";
+import lokacijaService from "../../services/lokacija.service";
+import gradService from "../../services/grad.service";
+import pozicijaService from "../../services/pozicija.service";
+
 import UserEditModalComponentVue from "./UserEditModalComponent.vue";
 export default {
   components: {
@@ -46,12 +59,11 @@ export default {
   created() {
     userService.getUserById(this.$route.params.id).then((res) => {
       this.user = res["data"];
-
-      userService
+      lokacijaService
         .getLokacijaById(this.user.lokacija_trenutna_id)
         .then((res) => {
           this.lokacija = res["data"];
-          userService
+          gradService
             .getGradById(this.lokacija.grad_id)
             .then((res) => {
               this.grad = res["data"];
@@ -68,7 +80,8 @@ export default {
         .catch((err) => {
           console.log(err);
         });
-      userService
+
+      pozicijaService
         .getPozicijaById(this.user.pozicija_trenutna_id)
         .then((res) => {
           this.pozicija = res["data"];
