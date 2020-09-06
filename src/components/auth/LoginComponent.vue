@@ -29,7 +29,7 @@ export default {
         window.location.href = "/";
       })
       .catch((err)=> {
-        console.log(err);
+        this.$toastr.e('Greska prilikom prijave korisnika.', 'Greska');
       })
     }
   }

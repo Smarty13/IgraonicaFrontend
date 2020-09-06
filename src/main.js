@@ -54,7 +54,7 @@ Vue.use(VueToastr);
 const router = new VueRouter({
   mode: "history",
   routes: [
-    { path: '/login', component: LoginComponent, meta: { windowRedirectAfter: true } },
+    { path: '/login', component: LoginComponent },
     { path: '/register', component: RegisterComponent, beforeEnter: jePoslovodjaGuard },
     { path: "/user/:id", component: UserComponent },
     { path: '/login', component: LoginComponent },

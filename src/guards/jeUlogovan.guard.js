@@ -4,5 +4,5 @@ export default (to, from, next) => {
     if(authService.getToken() && authService.getUser()) {
         next();
     }
-    next('/login');
+    window.location.href = "/login";
 } 
