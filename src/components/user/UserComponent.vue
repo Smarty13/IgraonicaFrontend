@@ -35,6 +35,7 @@ import userService from "../../services/user.service";
 import lokacijaService from "../../services/lokacija.service";
 import gradService from "../../services/grad.service";
 import pozicijaService from "../../services/pozicija.service";
+
 import UserEditModalComponentVue from "./UserEditModalComponent.vue";
 export default {
   components: {
@@ -58,7 +59,6 @@ export default {
   created() {
     userService.getUserById(this.$route.params.id).then((res) => {
       this.user = res["data"];
-
       lokacijaService
         .getLokacijaById(this.user.lokacija_trenutna_id)
         .then((res) => {
@@ -80,6 +80,7 @@ export default {
         .catch((err) => {
           console.log(err);
         });
+
       pozicijaService
         .getPozicijaById(this.user.pozicija_trenutna_id)
         .then((res) => {

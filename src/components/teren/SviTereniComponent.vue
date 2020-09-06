@@ -1,5 +1,8 @@
 <template>
     <div class="container">
+        <p></p>
+        <button class="btn btn-secondary" @click="dodajTeren">Dodaj teren</button>
+        <p></p>
         <table class="table text-center table-hover">
             <thead class="thead-dark">
                 <tr>
@@ -37,8 +40,11 @@ export default{
         }
     },
     methods:{
+        dodajTeren(){
+            this.$router.push('/dodajTeren');
+        },
         izmeniTeren(id) {
-
+            this.$router.push('/tereni/edit/'+id);
         },
         obrisiTeren(id) {
             terenService.deleteTeren(id)

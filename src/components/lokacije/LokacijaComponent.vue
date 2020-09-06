@@ -8,12 +8,8 @@
       <p class="card-text">Grad: {{ grad.naziv }}</p>
       <p class="card-text">Kvadratura: {{ lokacija.kvadratura }}</p>
 
-      <a href="#" class="btn btn-primary" @click="izmeniLokaciju(lokacija.id)"
-        >Izmeni</a
-      >
-      <a href="#" class="btn btn-warning" @click="obrisiLokaciju(lokacija.id)"
-        >Fire</a
-      >
+      <a href="#" class="btn btn-primary" @click="izmeniLokaciju(lokacija.id)">Izmeni</a>
+      <a href="#" class="btn btn-warning" @click="obrisiLokaciju(lokacija.id)">Fire</a>
     </div>
   </div>
 </template>
