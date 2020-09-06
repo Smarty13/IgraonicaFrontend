@@ -1,13 +1,14 @@
-import Vue from 'vue';
-import App from './App.vue';
-import VueRouter from 'vue-router';
-import BootstrapVue from 'bootstrap-vue';
-import 'bootstrap/dist/css/bootstrap.css';
-import 'bootstrap-vue/dist/bootstrap-vue.css';
+import Vue from "vue";
+import App from "./App.vue";
+import VueRouter from "vue-router";
+import BootstrapVue from "bootstrap-vue";
+import "bootstrap/dist/css/bootstrap.css";
+import "bootstrap-vue/dist/bootstrap-vue.css";
 import VueToastr from "vue-toastr";
 
 
-
+import UserComponent from "./components/user/UserComponent";
+import UserLokacija from "./components/user/UserFindByLokacijaComponenet";
 import LoginComponent from './components/auth/LoginComponent';
 import RegisterComponent from './components/auth/RegisterComponent';
 import SveLokacijeComponent from './components/lokacije/SveLokacijeComponent';
@@ -40,21 +41,32 @@ import DodajPozicijuComponent from './components/pozicija/DodajPozicijuComponent
 import IzmeniPozicijuComponent from './components/pozicija/IzmeniPozicijuComponent';
 import PozicijaComponent from './components/pozicija/PozicijaComponent';
 
+<<<<<<< HEAD
 import radiULokacijiGuard from './guards/radiULokaciji.guard';
 import jePoslovodjaGuard from './guards/jePoslovodja.guard';
 
 Vue.config.productionTip = false;
+=======
+>>>>>>> 0ad53e058ca92f94519f2c6895dd8d346c75f972
 
+Vue.config.productionTip = false;
 
 Vue.use(VueRouter);
 Vue.use(BootstrapVue);
 Vue.use(VueToastr);
 
 const router = new VueRouter({
-  mode: 'history',
+  mode: "history",
   routes: [
+<<<<<<< HEAD
     { path: '/login', component: LoginComponent, meta: { windowRedirectAfter: true } },
     { path: '/register', component: RegisterComponent, beforeEnter: jePoslovodjaGuard },
+=======
+    { path: "/user/:id", component: UserComponent },
+    { path: "/user/lokacija", component: UserLokacija },
+    { path: '/login', component: LoginComponent },
+    { path: '/register', component: RegisterComponent },
+>>>>>>> 0ad53e058ca92f94519f2c6895dd8d346c75f972
     { path: '/lokacije', component: SveLokacijeComponent},
     { path: '/lokacije/:id', component: LokacijaComponent, beforeEnter: radiULokacijiGuard},
     { path: '/dodajLokaciju', component: DodajLokacijuComponent},
@@ -87,8 +99,7 @@ const router = new VueRouter({
   ]
 });
 
-
 new Vue({
   router,
-  render: h => h(App),
-}).$mount('#app')
+  render: (h) => h(App),
+}).$mount("#app");

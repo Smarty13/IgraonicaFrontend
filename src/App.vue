@@ -6,18 +6,13 @@
     <b-collapse id="nav-collapse" is-nav v-if="computedIsLoggedIn">
         <!-- Meni za poslovodju -->
         <b-navbar-nav v-if="computedPozicija == 'Poslovodja'">
-        <b-nav-item href="#">Posolovodja</b-nav-item>
+          <b-nav-item href="#">Posolovodja</b-nav-item>
         </b-navbar-nav>
-
-
-
 
         <!-- Meni za ostale -->
         <b-navbar-nav v-else>
-        <b-nav-item href="#">Nisi poslovodja</b-nav-item>
+          <b-nav-item href="#">Nisi poslovodja</b-nav-item>
         </b-navbar-nav>
-
-
 
         <!-- Logout je uvek tu -->
         <b-navbar-nav class="ml-auto">
@@ -25,14 +20,15 @@
         </b-navbar-nav>
     </b-collapse>
     </b-navbar>
+
+
+
     <router-view /> 
   </div>
 </template>
 
 <script>
 import authService from './services/authentication.service';
-import LoginComponent from './components/auth/LoginComponent';
-import OkvirComponent from './components/OkvirComponent';
 
 export default {
   name: 'App',
