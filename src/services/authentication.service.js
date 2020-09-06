@@ -11,11 +11,19 @@ export default {
         return axios.post(`${constants.AUTH_API}/register`, data);
     },
     logout() {
-        return axios.post(`${constants.AUTH_API}/logout`)
+        axios.post(`${constants.AUTH_API}/me`)
         .then((res) => {
+            axios.post(`${constants.AUTH_API}/logout`)
+            .then((res) => {
+                localStorage.removeItem('token');
+                localStorage.removeItem('user');
+                window.location.href = "/";
+            })
+        })
+        .catch((err) => {
             localStorage.removeItem('token');
             localStorage.removeItem('user');
-            window.location.href = "/";
+            window.location.href = "/login";
         })
     },
     setToken(token) {

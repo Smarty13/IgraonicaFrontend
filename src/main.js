@@ -43,7 +43,7 @@ import SveRezervacijeComponent from './components/rezervacija/SveRezervacijeComp
 import DodajRezervacijuComponent from './components/rezervacija/DodajRezervacijuComponent';
 import IzmeniRezervacijuComponent from './components/rezervacija/IzmeniRezervacijuComponent';
 import RezervacijaComponent from './components/rezervacija/RezervacijaComponent';
-
+import HomepageComponent from './components/HomepageComponent';
 
 import radiULokacijiGuard from './guards/radiULokaciji.guard';
 import jePoslovodjaGuard from './guards/jePoslovodja.guard';
@@ -59,11 +59,10 @@ Vue.use(VueToastr);
 const router = new VueRouter({
   mode: "history",
   routes: [
+    { path: '/', component: HomepageComponent },
     { path: '/login', component: LoginComponent },
     { path: '/register', component: RegisterComponent, beforeEnter: jePoslovodjaGuard },
     { path: "/user/:id", component: UserComponent },
-    { path: '/login', component: LoginComponent },
-    { path: '/register', component: RegisterComponent },
     { path: '/lokacije', component: SveLokacijeComponent},
     { path: '/lokacije/:id', component: LokacijaComponent, beforeEnter: radiULokacijiGuard},
     { path: '/dodajLokaciju', component: DodajLokacijuComponent},
