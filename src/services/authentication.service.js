@@ -15,6 +15,7 @@ export default {
         .then((res) => {
             localStorage.removeItem('token');
             localStorage.removeItem('user');
+            window.location.href = "/";
         })
     },
     setToken(token) {

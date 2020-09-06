@@ -26,10 +26,10 @@ export default {
       .then((res)=> {
         authenticationService.setToken(res['data']['access_token']);
         authenticationService.setUser(res['data']['user']);
-        this.$router.push('/');
+        window.location.href = "/";
       })
       .catch((err)=> {
-        console.log(err);
+        this.$toastr.e('Greska prilikom prijave korisnika.', 'Greska');
       })
     }
   }

@@ -8,7 +8,6 @@ import VueToastr from "vue-toastr";
 
 
 import UserComponent from "./components/user/UserComponent";
-import UserLokacija from "./components/user/UserFindByLokacijaComponenet";
 import LoginComponent from './components/auth/LoginComponent';
 import RegisterComponent from './components/auth/RegisterComponent';
 import SveLokacijeComponent from './components/lokacije/SveLokacijeComponent';
@@ -60,10 +59,9 @@ Vue.use(VueToastr);
 const router = new VueRouter({
   mode: "history",
   routes: [
-    { path: '/login', component: LoginComponent, meta: { windowRedirectAfter: true } },
+    { path: '/login', component: LoginComponent },
     { path: '/register', component: RegisterComponent, beforeEnter: jePoslovodjaGuard },
     { path: "/user/:id", component: UserComponent },
-    { path: "/user/lokacija", component: UserLokacija },
     { path: '/login', component: LoginComponent },
     { path: '/register', component: RegisterComponent },
     { path: '/lokacije', component: SveLokacijeComponent},
