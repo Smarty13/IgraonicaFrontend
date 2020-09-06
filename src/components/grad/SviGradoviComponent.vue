@@ -1,5 +1,8 @@
 <template>
     <div class="container">
+        <p></p>
+        <button class="btn btn-secondary" @click="dodajGrad">Dodaj grad</button>
+        <p></p>
         <table class="table text-center table-hover">
             <thead class="thead-dark">
                 <tr>
@@ -34,8 +37,11 @@ export default{
         }
     },
     methods:{
+        dodajGrad(){
+            this.$router.push('/dodajGrad');
+        },
         izmeniGrad(id) {
-
+            this.$router.push('/gradovi/edit/'+id);
         },
         obrisiGrad(id) {
             gradService.deleteGrad(id)
@@ -52,7 +58,6 @@ export default{
         gradService.getAllGrad()
         .then((res)=>{
             this.gradovi = res['data'];
-            console.log(res['data']);
         })
         .catch((err)=>{
             console.log(err);

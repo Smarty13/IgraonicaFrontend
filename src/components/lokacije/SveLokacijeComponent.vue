@@ -1,5 +1,8 @@
 <template>
     <div class="container">
+        <p></p>
+        <button class="btn btn-secondary" @click="dodajLokaciju">Dodaj lokaciju</button>
+        <p></p>
         <table class="table text-center table-hover">
             <thead class="thead-dark">
                 <tr>
@@ -41,8 +44,11 @@ export default{
         }
     },
     methods:{
+        dodajLokaciju(){
+            this.$router.push('/dodajLokaciju');
+        },
         izmeniLokaciju(id) {
-
+            this.$router.push('/lokacije/edit/'+id);
         },
         obrisiLokaciju(id) {
             lokacijaService.deleteLokacija(id)
@@ -59,7 +65,7 @@ export default{
         lokacijaService.getAllLokacija()
         .then((res)=>{
             this.lokacije = res['data'];
-            console.log(res['data']);
+            
         })
         .catch((err)=>{
             console.log(err);

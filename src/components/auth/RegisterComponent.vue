@@ -79,6 +79,7 @@ export default {
   },
   methods: {
     callRegister: function () {
+      console.log(this.korisnik);
       if(this.korisnik.password === this.korisnik.confirmPassword){
         authenticationService.register(this.korisnik)
         .then((res) => {
