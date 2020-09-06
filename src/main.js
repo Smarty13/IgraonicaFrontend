@@ -1,13 +1,14 @@
-import Vue from 'vue';
-import App from './App.vue';
-import VueRouter from 'vue-router';
-import BootstrapVue from 'bootstrap-vue';
-import 'bootstrap/dist/css/bootstrap.css';
-import 'bootstrap-vue/dist/bootstrap-vue.css';
+import Vue from "vue";
+import App from "./App.vue";
+import VueRouter from "vue-router";
+import BootstrapVue from "bootstrap-vue";
+import "bootstrap/dist/css/bootstrap.css";
+import "bootstrap-vue/dist/bootstrap-vue.css";
 import VueToastr from "vue-toastr";
 
 
-
+import UserComponent from "./components/user/UserComponent";
+import UserLokacija from "./components/user/UserFindByLokacijaComponenet";
 import LoginComponent from './components/auth/LoginComponent';
 import RegisterComponent from './components/auth/RegisterComponent';
 import SveLokacijeComponent from './components/lokacije/SveLokacijeComponent';
@@ -40,16 +41,18 @@ import DodajPozicijuComponent from './components/pozicija/DodajPozicijuComponent
 import IzmeniPozicijuComponent from './components/pozicija/IzmeniPozicijuComponent';
 import PozicijaComponent from './components/pozicija/PozicijaComponent';
 
-Vue.config.productionTip = false;
 
+Vue.config.productionTip = false;
 
 Vue.use(VueRouter);
 Vue.use(BootstrapVue);
 Vue.use(VueToastr);
 
 const router = new VueRouter({
-  mode: 'history',
+  mode: "history",
   routes: [
+    { path: "/user/:id", component: UserComponent },
+    { path: "/user/lokacija", component: UserLokacija },
     { path: '/login', component: LoginComponent },
     { path: '/register', component: RegisterComponent },
     { path: '/lokacije', component: SveLokacijeComponent},
@@ -84,8 +87,7 @@ const router = new VueRouter({
   ]
 });
 
-
 new Vue({
   router,
-  render: h => h(App),
-}).$mount('#app')
+  render: (h) => h(App),
+}).$mount("#app");
