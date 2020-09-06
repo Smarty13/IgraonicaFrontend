@@ -52,8 +52,8 @@ import IzmeniRezervacijuComponent from "./components/rezervacija/IzmeniRezervaci
 import RezervacijaComponent from "./components/rezervacija/RezervacijaComponent";
 import HomepageComponent from "./components/HomepageComponent";
 
-import radiULokacijiGuard from "./guards/radiULokaciji.guard";
-import jePoslovodjaGuard from "./guards/jePoslovodja.guard";
+// import radiULokacijiGuard from "./guards/radiULokaciji.guard";
+// import jePoslovodjaGuard from "./guards/jePoslovodja.guard";
 
 Vue.config.productionTip = false;
 
@@ -66,19 +66,10 @@ const router = new VueRouter({
   routes: [
     { path: "/", component: HomepageComponent },
     { path: "/login", component: LoginComponent },
-    {
-      path: "/register",
-      component: RegisterComponent,
-      beforeEnter: jePoslovodjaGuard,
-    },
     { path: "/user/:id", component: UserComponent },
     { path: "/register", component: RegisterComponent },
     { path: "/lokacije", component: SveLokacijeComponent },
-    {
-      path: "/lokacije/:id",
-      component: LokacijaComponent,
-      beforeEnter: radiULokacijiGuard,
-    },
+    { path: "/lokacije/:id", component: LokacijaComponent },
     { path: "/dodajLokaciju", component: DodajLokacijuComponent },
     { path: "/lokacije/edit/:id", component: IzmeniLokacijuComponent },
     { path: "/sportovi", component: SviSportoviComponent },
