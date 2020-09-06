@@ -49,7 +49,7 @@ Vue.use(VueToastr);
 const router = new VueRouter({
   mode: 'history',
   routes: [
-    { path: '/login', component: LoginComponent },
+    { path: '/login', component: LoginComponent, meta: { windowRedirectAfter: true } },
     { path: '/register', component: RegisterComponent, beforeEnter: jePoslovodjaGuard },
     { path: '/lokacije', component: SveLokacijeComponent},
     { path: '/lokacije/:id', component: LokacijaComponent, beforeEnter: radiULokacijiGuard},
