@@ -3,7 +3,7 @@
     <div class="w-md-50">
       <div>
         <div class="header">
-          <h5 class="display-4 mb-5">Dodaj rezervaciju</h5>
+          <h5 class="display-4 mb-5">Izmeni rezervaciju</h5>
         </div>
         <div class="body">
           <div class="row mb-2">
@@ -12,17 +12,13 @@
               class="col-md-6 form-control"
               v-model="rezervacija.teren_id"
             >
-              <option
-                v-for="t in computedTereni"
-                :key="t.id"
-                v-bind:value="t.id"
-                >{{ t.naziv }}</option
-              >
+              <option v-for="t in computedTereni" :key="t.id">
+                {{ t.naziv }}
+              </option>
             </select>
           </div>
           <div class="row mb-2">
             <span class="col-md-6">Klijent</span>
-
             <input
               class="col-md-6 form-control"
               type="text"
@@ -40,7 +36,6 @@
             />
           </div>
         </div>
-
         <div class="footer">
           <button type="button" class="btn btn-success mr-5" @click="izmeni">
             Izmeni
@@ -97,7 +92,7 @@ export default {
       rezervacijaService
         .editRezervacija(this.rezervacija, this.$route.params.id)
         .then((res) => {
-          this.$toastr.s("Rezervacija je izmenjena.", "Rezervacija izmenjena!");
+          this.$toastr.s("Rezervacija je izmenjena", "Rezervacija izmenjena!");
           this.$router.go("/");
         })
         .catch((err) => {
@@ -121,9 +116,9 @@ export default {
         this.rezervacija = res["data"];
 
         terenService
-          .getTerenById(this.rezervacija.teren_id)
+          .getAllTeren()
           .then((res) => {
-            this.teren = res["data"];
+            this.tereni = res["data"];
 
             klijentService
               .getById(this.rezervacija.klijent_id)
@@ -153,3 +148,4 @@ export default {
   },
 };
 </script>
+<style></style>
