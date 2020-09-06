@@ -55,10 +55,10 @@ export default {
   },
   methods: {
     dodajRezervaciju() {
-      this.$router.push("/rezervacija/add");
+      this.$router.push("/rezervacije/add");
     },
     izmeniRezervaciju(id) {
-      this.$router.push("/rezervacija/eit/" + id);
+      this.$router.push("/rezervacije/edit/" + id);
     },
     obrisiRezervaciju(id) {
       rezervacijaService

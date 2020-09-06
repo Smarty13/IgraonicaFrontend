@@ -33,6 +33,12 @@
 </template>
 <script>
 import rezervacijaService from "../../services/rezervacija.service";
+import terenService from "../../services/teren.service";
+import lokacijaService from "../../services/lokacija.service";
+import gradService from "../../services/grad.service";
+import sportService from "../../services/sport.service";
+import klijentService from "../../services/klijent.service";
+import racunService from "../../services/racun.service";
 export default {
   data: function () {
     return {
@@ -86,20 +92,46 @@ export default {
       .then((res) => {
         this.rezervacija = res["data"];
 
-        rezervacijaService
-          .getTerenById(this.rezervacija.teren_id)
+        terenService
+          .getById(this.rezervacija.teren_id)
           .then((res) => {
             this.teren = res["data"];
 
-            rezervacijaService
-              .getLokacijaById(this.teren.lokacija_id)
+            lokacijaService
+              .getById(this.teren.lokacija_id)
               .then((res) => {
                 this.lokacija = res["data"];
 
-                rezervacijaService
-                  .getGradById(this.lokacija.grad_id)
+                gradService
+                  .getById(this.lokacija.grad_id)
                   .then((res) => {
                     this.grad = res["data"];
+                    sportService
+                      .getById(this.teren.sport_id)
+                      .then((res) => {
+                        this.sport = res["data"];
+
+                        klijentService
+                          .getById(this.rezervacija.klijent_id)
+                          .then((res) => {
+                            this.klijent = res["data"];
+
+                            racunService
+                              .getById(this.rezervacija.racun_id)
+                              .then((res) => {
+                                this.racun = res["data"];
+                              })
+                              .catch((err) => {
+                                console.log(err);
+                              });
+                          })
+                          .catch((err) => {
+                            console.log(err);
+                          });
+                      })
+                      .catch((err) => {
+                        console.log(err);
+                      });
                   })
                   .catch((err) => {
                     console.log(err);
@@ -108,33 +140,6 @@ export default {
               .catch((err) => {
                 console.log(err);
               });
-
-            rezervacijaService
-              .getSportById(this.teren.sport_id)
-              .then((res) => {
-                this.sport = res["data"];
-              })
-              .catch((err) => {
-                console.log(err);
-              });
-          })
-          .catch((err) => {
-            console.log(err);
-          });
-
-        rezervacijaService
-          .getKlijentById(this.rezervacija.klijent_id)
-          .then((res) => {
-            this.klijent = res["data"];
-          })
-          .catch((err) => {
-            console.log(err);
-          });
-
-        rezervacijaService
-          .getRacunById(this.rezervacija.racun_id)
-          .then((res) => {
-            this.racun = res["data"];
           })
           .catch((err) => {
             console.log(err);
