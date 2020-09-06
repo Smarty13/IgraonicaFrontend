@@ -39,6 +39,11 @@ import SvePozicijeComponent from './components/pozicija/SvePozicijeComponent';
 import DodajPozicijuComponent from './components/pozicija/DodajPozicijuComponent';
 import IzmeniPozicijuComponent from './components/pozicija/IzmeniPozicijuComponent';
 import PozicijaComponent from './components/pozicija/PozicijaComponent';
+import SveRezervacijeComponent from './components/rezervacija/SveRezervacijeComponent';
+import DodajRezervacijuComponent from './components/rezervacija/DodajRezervacijuComponent';
+import IzmeniRezervacijuComponent from './components/rezervacija/IzmeniRezervacijuComponent';
+import RezervacijaComponent from './components/rezervacija/RezervacijaComponent';
+
 
 import radiULokacijiGuard from './guards/radiULokaciji.guard';
 import jePoslovodjaGuard from './guards/jePoslovodja.guard';
@@ -88,6 +93,10 @@ const router = new VueRouter({
     { path: '/pozicije/add', component: DodajPozicijuComponent },
     { path: '/pozicije/edit/:id', component: IzmeniPozicijuComponent },
     { path: '/pozicije/:id', component: PozicijaComponent },
+    { path: '/rezervacije', component: SveRezervacijeComponent },
+    { path: '/rezervacije/add', component: DodajRezervacijuComponent },
+    { path: '/rezervacije/edit/:id', component: IzmeniRezervacijuComponent },
+    { path: '/rezervacije/:id', component: RezervacijaComponent }
   ]
 });
 
