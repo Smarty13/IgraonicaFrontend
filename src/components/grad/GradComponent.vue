@@ -8,7 +8,6 @@
 
       
       <a href="#" class="btn btn-primary" @click="izmeniGrad(grad.id)">Izmeni</a>
-      <a href="#" class="btn btn-warning" @click="obrisiGrad(grad.id)">Fire</a>
     </div>
   </div>
 </template>
@@ -28,7 +27,7 @@ export default{
     },
     methods:{
         izmeniGrad(id) {
-
+            this.$router.push('/gradovi/edit/'+id);
         },
         obrisiGrad(id) {
             gradService.deleteGrad(id)

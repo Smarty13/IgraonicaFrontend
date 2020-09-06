@@ -22,8 +22,11 @@ import SviGradoviComponent from './components/grad/SviGradoviComponent';
 import GradComponent from './components/grad/GradComponent';
 import DodajGradComponent from './components/grad/DodajGradComponent';
 import IzmeniGradComponent from './components/grad/IzmeniGradComponent';
-
 import SviTereniComponent from './components/teren/SviTereniComponent';
+import TerenComponent from './components/teren/TerenComponent';
+import DodajTerenComponent from './components/teren/DodajTerenComponent';
+import IzmeniTerenComponent from './components/teren/IzmeniTerenComponent';
+
 import SviPopustiComponent from './components/popust/SviPopustiComponent';
 import DodajPopustComponent from './components/popust/DodajPopustComponent';
 import IzmeniPopustComponent from './components/popust/IzmeniPopustComponent';
@@ -62,6 +65,9 @@ const router = new VueRouter({
     { path: '/dodajGrad', component: DodajGradComponent},
     { path: '/gradovi/edit/:id', component: IzmeniGradComponent},
     { path: '/tereni', component: SviTereniComponent},
+    { path: '/tereni/:id', component: TerenComponent},
+    { path: '/dodajTeren', component: DodajTerenComponent},
+    { path: '/tereni/edit/:id', component: IzmeniTerenComponent},
     { path: '/gradovi', component: SviGradoviComponent},
     { path: '/popusti', component: SviPopustiComponent },
     { path: '/popusti/add', component: DodajPopustComponent },

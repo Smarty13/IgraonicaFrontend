@@ -6,7 +6,6 @@
       <h5 class="card-title">{{ sport.naziv }}</h5>
       
       <a href="#" class="btn btn-primary" @click="izmeniSport(sport.id)">Izmeni</a>
-      <a href="#" class="btn btn-warning" @click="obrisiSport(sport.id)">Fire</a>
     </div>
   </div>
 </template>
@@ -25,7 +24,7 @@ export default{
     },
     methods:{
         izmeniSport(id) {
-
+            this.$router.push('/sportovi/edit/'+id);
         },
         obrisiSport(id) {
             sportService.deleteSport(id)
