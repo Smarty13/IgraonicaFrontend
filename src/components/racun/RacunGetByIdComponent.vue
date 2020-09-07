@@ -1,5 +1,5 @@
 <template>
-  <div v-if="computedRacun">
+  <div v-if="computedRacun" class="mt-5 mb-5">
     <div class="d-flex justify-content-center" style="height: 100%">
       <div class="card bg-dark mb-3" v-if="racun">
         <div class="text-justify card-header text-warning">Klijent</div>
@@ -33,12 +33,12 @@
     </div>
 
     <PicaComponent />
-    <div class="container">
+    <div class="container" v-if="!computedRacun.placeno">
       <div class="row d-flex justify-content-center">
         <div class="col-md-4">
             <select class="form-control" v-model="forma_popust">
             <option v-for="p in computedPopusti" :key="p.id"
-            v-bind:value="p.id"> {{p.oznaka_popust}}, {{p.vrednost_popust}}% </option>
+            v-bind:value="p"> {{p.oznaka_popust}}, {{p.vrednost_popust}}% </option>
             </select>
         </div>
         <div class="col-md-2">
@@ -89,21 +89,33 @@ export default {
       this.$forceUpdate();
     },
     plati() {
-      if(this.forma_popust == 0) {
-        const data = this.racun;
-        data.placeno = false;
-        racunService.putRacun(data.id, data)
+      const data = {
+        ukupno: this.racun.ukupno,
+        placeno: 1
+      }
+      if(this.forma_popust.vrednost_popust != 0) {
+        data.ukupno = Math.round(data.ukupno * (1.0 - (this.forma_popust.vrednost_popust/100)));
+      }
+
+      racunService.putRacun(this.$route.params.id, data)
+      .then((res) => {
+        const rp = {
+          popust_id: this.forma_popust.id,
+          racun_id: this.racun.id
+        };
+        console.log(rp)
+        racunPopustService.addRacunPopust(rp)
         .then((res) => {
           this.$toastr.s('Racun uspesno placen.', 'Racun placen.');
           this.$router.go('/');
         })
         .catch((err) => {
-          this.$toastr.e('Racun nije placen', 'Greska');
-        })
-      }
-      else {
-        this.$toastr.s('No hi', 'hi');
-      }
+          this.$toastr.e('Dodavanje poputa nije uspelo', 'Greska');
+        });
+      })
+      .catch((err) => {
+        this.$toastr.e('Racun nije placen', 'Greska');
+      });
     }
   },
   created() {
@@ -116,7 +128,7 @@ export default {
             const nema = {
                 id: 0,
                 oznaka_popust: "Puna cena",
-                cena_popust: 0
+                vrednost_popust: 0
             }
             this.popusti = [nema, ... res['data']];
         })
