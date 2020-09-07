@@ -6,13 +6,12 @@ import "bootstrap/dist/css/bootstrap.css";
 import "bootstrap-vue/dist/bootstrap-vue.css";
 import VueToastr from "vue-toastr";
 
-import RacunPost from "./components/racun/RacunPostComponent";
-import RacunGetAll from "./components/racun/RacunGetAllComponent";
-import RacunGetById from "./components/racun/RacunGetByIdComponent";
-import KlijentGetByIdComponent from "./components/klijent/KlijentGetByIdComponent";
-import KlijentPostComponent from "./components/klijent/KlijentPostComponent";
-import KlijentAllComponent from "./components/klijent/KlijentGetAllComponent";
-import radioUComponent from "./components/radioU/radioUGetAllComponent";
+import SveRezervacijeComponent from "./components/rezervacija/SveRezervacijeComponent";
+import DodajRezervacijuComponent from "./components/rezervacija/DodajRezervacijuComponent";
+import IzmeniRezervacijuComponent from "./components/rezervacija/IzmeniRezervacijuComponent";
+import RezervacijaComponent from "./components/rezervacija/RezervacijaComponent";
+import HomepageComponent from "./components/HomepageComponent";
+import UserComponent from "./components/user/UserComponent";
 import LoginComponent from "./components/auth/LoginComponent";
 import RegisterComponent from "./components/auth/RegisterComponent";
 import SveLokacijeComponent from "./components/lokacije/SveLokacijeComponent";
@@ -27,8 +26,6 @@ import SviGradoviComponent from "./components/grad/SviGradoviComponent";
 import GradComponent from "./components/grad/GradComponent";
 import DodajGradComponent from "./components/grad/DodajGradComponent";
 import IzmeniGradComponent from "./components/grad/IzmeniGradComponent";
-import UserComponent from "./components/user/UserComponent";
-
 import SviTereniComponent from "./components/teren/SviTereniComponent";
 import TerenComponent from "./components/teren/TerenComponent";
 import DodajTerenComponent from "./components/teren/DodajTerenComponent";
@@ -50,7 +47,9 @@ import SveRezervacijeComponent from "./components/rezervacija/SveRezervacijeComp
 import DodajRezervacijuComponent from "./components/rezervacija/DodajRezervacijuComponent";
 import IzmeniRezervacijuComponent from "./components/rezervacija/IzmeniRezervacijuComponent";
 import RezervacijaComponent from "./components/rezervacija/RezervacijaComponent";
-import HomepageComponent from "./components/HomepageComponent";
+
+import radiULokacijiGuard from "./guards/radiULokaciji.guard";
+import jePoslovodjaGuard from "./guards/jePoslovodja.guard";
 
 // import radiULokacijiGuard from "./guards/radiULokaciji.guard";
 // import jePoslovodjaGuard from "./guards/jePoslovodja.guard";
@@ -64,12 +63,29 @@ Vue.use(VueToastr);
 const router = new VueRouter({
   mode: "history",
   routes: [
-    { path: "/", component: HomepageComponent },
-    { path: "/login", component: LoginComponent },
+    { path: "/rezervacije", component: SveRezervacijeComponent },
+    { path: "/rezervacije/add", component: DodajRezervacijuComponent },
+    { path: "/rezervacije/edit/:id", component: IzmeniRezervacijuComponent },
+    { path: "/rezervacije/:id", component: RezervacijaComponent },
+    {
+      path: "/login",
+      component: LoginComponent,
+      meta: { windowRedirectAfter: true },
+    },
+    {
+      path: "/register",
+      component: RegisterComponent,
+      beforeEnter: jePoslovodjaGuard,
+    },
     { path: "/user/:id", component: UserComponent },
+    { path: "/login", component: LoginComponent },
     { path: "/register", component: RegisterComponent },
     { path: "/lokacije", component: SveLokacijeComponent },
-    { path: "/lokacije/:id", component: LokacijaComponent },
+    {
+      path: "/lokacije/:id",
+      component: LokacijaComponent,
+      beforeEnter: radiULokacijiGuard,
+    },
     { path: "/dodajLokaciju", component: DodajLokacijuComponent },
     { path: "/lokacije/edit/:id", component: IzmeniLokacijuComponent },
     { path: "/sportovi", component: SviSportoviComponent },
@@ -84,6 +100,7 @@ const router = new VueRouter({
     { path: "/tereni/:id", component: TerenComponent },
     { path: "/dodajTeren", component: DodajTerenComponent },
     { path: "/tereni/edit/:id", component: IzmeniTerenComponent },
+    { path: "/gradovi", component: SviGradoviComponent },
     { path: "/popusti", component: SviPopustiComponent },
     { path: "/popusti/add", component: DodajPopustComponent },
     { path: "/popusti/edit/:id", component: IzmeniPopustComponent },
@@ -100,14 +117,6 @@ const router = new VueRouter({
     { path: "/rezervacije/add", component: DodajRezervacijuComponent },
     { path: "/rezervacije/edit/:id", component: IzmeniRezervacijuComponent },
     { path: "/rezervacije/:id", component: RezervacijaComponent },
-    { path: "/radioU", component: radioUComponent },
-    { path: "/klijent", component: KlijentAllComponent },
-    { path: "/klijent/add", component: KlijentPostComponent },
-    { path: "/klijent/:id", component: KlijentGetByIdComponent },
-    { path: "/user/:id", component: UserComponent },
-    { path: "/racun/add", component: RacunPost },
-    { path: "/racun/:id", component: RacunGetById },
-    { path: "/racun", component: RacunGetAll },
   ],
 });
 

@@ -20,4 +20,7 @@ export default {
   getAllLokacijaByGradId(id) {
     return axios.get(`${constants.API}/lokacija/grad/${id}`);
   },
+  getGradById(id) {
+    return axios.get(`${constants.API}/grad/${id}`);
+  },
 };
