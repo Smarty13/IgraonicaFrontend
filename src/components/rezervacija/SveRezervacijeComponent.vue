@@ -22,6 +22,7 @@
           v-bind:class="{ active: r.racun.placeno, 'text-danger': !r.racun.placeno}"
           v-for="(r,i) in computedRezervacije"
           :key="r.id"
+          @click="redirekcija(r.id)"
         >
           <th scope="row">{{ i + 1 }}</th>
           <td>{{ r.teren.naziv }}</td>
@@ -72,6 +73,9 @@ export default {
         });
     },
     platiRacun(racun_id) {},
+    redirekcija(id) {
+      this.$router.push("/rezervacije/" + id);
+    },
   },
   created() {
     rezervacijaService

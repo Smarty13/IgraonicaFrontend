@@ -14,7 +14,7 @@
         </tr>
       </thead>
       <tbody>
-        <tr v-for="p in computedPica" :key="p.id">
+        <tr v-for="p in computedPica" :key="p.id" @click="redirekcija(p.id)">
           <th scope="row">{{ p.id }}</th>
           <td>{{ p.Naziv_Pica }}</td>
           <td>{{ p.Cena_Pica }}</td>
@@ -57,6 +57,9 @@ export default {
         .catch((err) => {
           this.$toastr.e("Pice nije obrisano", "Brisanje neuspesno");
         });
+    },
+    redirekcija(id) {
+      this.$router.push("/pica/" + id);
     },
   },
   created() {

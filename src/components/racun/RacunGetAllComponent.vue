@@ -1,8 +1,6 @@
 <template>
   <div class="container">
-    <button class="btn btn-secondary" @click="addRacun">
-      Dodaj racun
-    </button>
+    <button class="btn btn-secondary" @click="addRacun">Dodaj racun</button>
     <table class="table text-center table-hover">
       <thead class="thead-dark">
         <tr>
@@ -13,36 +11,24 @@
         </tr>
       </thead>
       <tbody>
-        <tr v-for="(r, i) in computedRacuni" :key="r.id">
+        <tr v-for="(r, i) in computedRacuni" :key="r.id" @click="redirekcija(r.id)">
           <th scope="row">{{ i + 1 }}</th>
           <td>{{ r.ukupno }}</td>
           <td v-if="r.placeno">Placen</td>
           <td v-else>Nije placen</td>
           <td>{{ r.created_at }}</td>
           <td>
-            <button @click="showEditModal(r)" class="btn btn-warning mr-3">
-              Izmeni
-            </button>
-            <button @click="showDeleteModal(r)" class="btn btn-danger">
-              Obrisi
-            </button>
+            <button @click="showEditModal(r)" class="btn btn-warning mr-3">Izmeni</button>
+            <button @click="showDeleteModal(r)" class="btn btn-danger">Obrisi</button>
           </td>
         </tr>
       </tbody>
     </table>
     <div v-if="showEdit">
-      <RacunEditModal
-        :showMe="showEdit"
-        :racun="racun"
-        @closeModal="hideModal()"
-      />
+      <RacunEditModal :showMe="showEdit" :racun="racun" @closeModal="hideModal()" />
     </div>
     <div v-if="showDelete">
-      <RacunDeleteModal
-        :showMe="showDelete"
-        :racun="racun"
-        @closeModal="hideModal()"
-      />
+      <RacunDeleteModal :showMe="showDelete" :racun="racun" @closeModal="hideModal()" />
     </div>
   </div>
 </template>
@@ -56,7 +42,7 @@ export default {
     RacunEditModal,
     RacunDeleteModal,
   },
-  data: function() {
+  data: function () {
     return {
       showEdit: false,
       showDelete: false,
@@ -80,6 +66,9 @@ export default {
     showDeleteModal(id) {
       this.racun = id;
       this.showDelete = true;
+    },
+    redirekcija(id) {
+      this.$router.push("/racun/" + id);
     },
   },
   created() {

@@ -1,8 +1,6 @@
 <template>
   <div class="container">
-    <button class="btn btn-secondary" @click="addKlijent">
-      Dodaj klijenta
-    </button>
+    <button class="btn btn-secondary" @click="addKlijent">Dodaj klijenta</button>
     <table class="table text-center table-hover">
       <thead class="thead-dark">
         <tr>
@@ -13,35 +11,23 @@
         </tr>
       </thead>
       <tbody>
-        <tr v-for="(k, i) in computedKlijent" :key="k.id">
+        <tr v-for="(k, i) in computedKlijent" :key="k.id" @click="redirekcija(k.id)">
           <th scope="row">{{ i + 1 }}</th>
           <td>{{ k.ime }}</td>
           <td>{{ k.prezime }}</td>
           <td>{{ k.kontakt }}</td>
           <td>
-            <button @click="showEditModal(k)" class="btn btn-warning mr-3">
-              Izmeni
-            </button>
-            <button @click="showDeleteModal(k)" class="btn btn-danger">
-              Obrisi
-            </button>
+            <button @click="showEditModal(k)" class="btn btn-warning mr-3">Izmeni</button>
+            <button @click="showDeleteModal(k)" class="btn btn-danger">Obrisi</button>
           </td>
         </tr>
       </tbody>
     </table>
     <div v-if="showEdit">
-      <KlijentEditModal
-        :showMe="showEdit"
-        :klijent="klijent"
-        @closeModal="hideModal()"
-      />
+      <KlijentEditModal :showMe="showEdit" :klijent="klijent" @closeModal="hideModal()" />
     </div>
     <div v-if="showDelete">
-      <KlijentDeleteModal
-        :showMe="showDelete"
-        :klijent="klijent"
-        @closeModal="hideModal()"
-      />
+      <KlijentDeleteModal :showMe="showDelete" :klijent="klijent" @closeModal="hideModal()" />
     </div>
   </div>
 </template>
@@ -55,7 +41,7 @@ export default {
     KlijentEditModal,
     KlijentDeleteModal,
   },
-  data: function() {
+  data: function () {
     return {
       showEdit: false,
       showDelete: false,
@@ -79,6 +65,9 @@ export default {
       this.showEdit = false;
       this.showDelete = false;
       this.$forceUpdate();
+    },
+    redirekcija(id) {
+      this.$router.push("/klijent/" + id);
     },
   },
   created() {

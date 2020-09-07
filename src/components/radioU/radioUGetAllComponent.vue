@@ -30,7 +30,7 @@
 <script>
 import radiioUService from "../../services/radioU.service";
 export default {
-  data: function() {
+  data: function () {
     return {
       radio: [],
     };
