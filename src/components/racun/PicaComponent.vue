@@ -1,5 +1,19 @@
 <template>
     <div class="container" v-if="computedPica">
+        <div class="row mb-4 d-flex justify-content-center">
+            <div class="col-md-4">
+                <select class="form-control" v-model="forma.pice">
+                <option v-for="s in computedSvaPica" :key="s.id"
+                v-bind:value="s.id"> {{s.Naziv_Pica}}, {{s.Cena_Pica}}din </option>
+                </select>
+            </div>
+            <div class="col-md-4">
+                <input class="form-control" type="number" v-model="forma.kolicina">
+            </div>
+            <div class="col-md-2">
+                <button class="btn btn-success" @click="dodajPice()">Dodaj pice</button>
+            </div>
+        </div>
         <table class="table text-center table-hover">
             <thead class="thead-dark">
                 <tr>
@@ -19,7 +33,7 @@
                     <td>{{p.pice.Cena_Pica}}din</td>
                     <td>{{ p.pice.Cena_Pica * p.kolicina }}din</td>
                     <td>
-                        <button class="btn btn-danger btn-sm ml-1" @click="obrisiPice(l.id)">Obrisi</button>
+                        <button class="btn btn-danger btn-sm ml-1" @click="obrisiPice(p.id)">Obrisi</button>
                     </td>
                 </tr>
                 <tr style="background-color: lightgray;">
@@ -30,22 +44,6 @@
                 </tr>
             </tbody>
         </table>
-
-        <div class="row d-flex justify-content-center">
-            <div class="col-md-4">
-                <select class="form-control" v-model="forma.pice">
-                <option v-for="s in computedSvaPica" :key="s.id"
-                v-bind:value="s.id"> {{s.Naziv_Pica}}, {{s.Cena_Pica}}din </option>
-                </select>
-            </div>
-            <div class="col-md-4">
-                <input class="form-control" type="number" v-model="forma.kolicina">
-            </div>
-            <div class="col-md-2">
-                <button class="btn btn-success" @click="dodajPice()">Dodaj pice</button>
-            </div>
-        </div>
-
     </div>
 </template>
 
@@ -116,6 +114,7 @@ export default {
             racunPiceService.obrisiRacunPice(id)
             .then((res) => {
                 this.$toastr.s('Pice uspesno uklonjeno sa racuna.', 'Pice obrisano');
+                this.$router.go('/');
             })
             .catch((err) => {
                 this.$toastr.e('Doslo je do greske prilikom brisanja.', 'Greska');
