@@ -109,7 +109,8 @@ const router = new VueRouter({
     { path: "/rezervacije", component: SveRezervacijeComponent },
     { path: "/rezervacije/add", component: DodajRezervacijuComponent },
     { path: "/rezervacije/edit/:id", component: IzmeniRezervacijuComponent },
-    { path: "/rezervacije/:id", component: RezervacijaComponent },
+    { path: "/rezervacije/:id", component: RezervacijaComponent }
+
   ],
 });
 
