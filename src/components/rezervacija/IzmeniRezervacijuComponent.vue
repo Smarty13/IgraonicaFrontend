@@ -8,45 +8,22 @@
         <div class="body">
           <div class="row mb-2">
             <span class="col-md-6">Teren</span>
-            <select
-              class="col-md-6 form-control"
-              v-model="rezervacija.teren_id"
-            >
-              <option v-for="t in computedTereni" :key="t.id">
-                {{ t.naziv }}
-              </option>
+            <select class="col-md-6 form-control" v-model="rezervacija.teren_id">
+              <option v-for="t in computedTereni" :key="t.id" v-bind:value="t.id">{{ t.naziv }}</option>
             </select>
           </div>
           <div class="row mb-2">
             <span class="col-md-6">Klijent</span>
-            <input
-              class="col-md-6 form-control"
-              type="text"
-              v-model="klijent.ime"
-              disabled
-            />
+            <input class="col-md-6 form-control" type="text" v-model="klijent.ime" disabled />
           </div>
           <div class="row mb-2">
             <span class="col-md-6">Racun</span>
-            <input
-              class="col-md-6 form-control"
-              type="text"
-              v-model="racun.id"
-              disabled
-            />
+            <input class="col-md-6 form-control" type="text" v-model="racun.id" disabled />
           </div>
         </div>
         <div class="footer">
-          <button type="button" class="btn btn-success mr-5" @click="izmeni">
-            Izmeni
-          </button>
-          <button
-            type="button"
-            class="btn btn-secondary ml-5"
-            @click="odustani"
-          >
-            Odustani
-          </button>
+          <button type="button" class="btn btn-success mr-5" @click="izmeni">Izmeni</button>
+          <button type="button" class="btn btn-secondary ml-5" @click="odustani">Odustani</button>
         </div>
       </div>
     </div>
@@ -57,14 +34,15 @@ import rezervacijaService from "../../services/rezervacija.service";
 import terenService from "../../services/teren.service";
 import klijentService from "../../services/klijent.service";
 import racunService from "../../services/racun.service";
+
 export default {
-  data: function() {
+  data: function () {
     return {
       rezervacija: {
         teren_id: "",
         klijent_id: "",
         racun_id: "",
-        created_at: "",
+        created_id: "",
         updated_at: "",
       },
       teren: {
@@ -72,7 +50,6 @@ export default {
         sport_id: "",
         lokacija_id: "",
       },
-
       klijent: {
         ime: "",
         prezime: "",
@@ -81,7 +58,7 @@ export default {
       racun: {
         ukupno: "",
         placeno: "",
-        created: "",
+        created_at: "",
         updated_at: "",
       },
       tereni: [],
@@ -114,17 +91,14 @@ export default {
       .getRezervacijaById(this.$route.params.id)
       .then((res) => {
         this.rezervacija = res["data"];
-
         terenService
           .getAllTeren()
           .then((res) => {
             this.tereni = res["data"];
-
             klijentService
               .getById(this.rezervacija.klijent_id)
               .then((res) => {
                 this.klijent = res["data"];
-
                 racunService
                   .getById(this.rezervacija.racun_id)
                   .then((res) => {
@@ -148,4 +122,5 @@ export default {
   },
 };
 </script>
-<style></style>
+<style>
+</style>
