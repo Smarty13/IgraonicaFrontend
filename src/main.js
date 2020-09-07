@@ -114,6 +114,10 @@ const router = new VueRouter({
     { path: "/rezervacije", component: SveRezervacijeComponent },
     { path: "/rezervacije/add", component: DodajRezervacijuComponent },
     { path: "/rezervacije/edit/:id", component: IzmeniRezervacijuComponent },
+
+    
+
+
     { path: "/rezervacije/:id", component: RezervacijaComponent },
     { path: "/klijent/add", component: KlijentPost },
     { path: "/klijent/:id", component: KlijentGetById },
@@ -121,6 +125,7 @@ const router = new VueRouter({
     { path: "/racun/add", component: RacunPost },
     { path: "/racun/:id", component: RacunGetById },
     { path: "/racun", component: RacunGetAll },
+
   ],
 });
 
