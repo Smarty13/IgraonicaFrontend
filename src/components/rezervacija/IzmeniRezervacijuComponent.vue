@@ -66,8 +66,13 @@ export default {
   },
   methods: {
     izmeni() {
+      const data = {
+        klijent_id: this.rezervacija.klijent_id,
+        teren_id: this.rezervacija.teren_id,
+        racun_id: this.rezervacija.racun_id,
+      };
       rezervacijaService
-        .editRezervacija(this.rezervacija, this.$route.params.id)
+        .editRezervacija(data, this.$route.params.id)
         .then((res) => {
           this.$toastr.s("Rezervacija je izmenjena", "Rezervacija izmenjena!");
           this.$router.go("/");

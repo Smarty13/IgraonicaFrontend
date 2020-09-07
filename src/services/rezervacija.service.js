@@ -12,7 +12,8 @@ export default {
     return axios.get(`${constants.API}/rezervacija/${id}`);
   },
   editRezervacija(data, id) {
-    return axios.put(`${constants.API}/rezervacija/${id}`, data, id);
+    console.log(data);
+    return axios.put(`${constants.API}/rezervacija/${id}`, data);
   },
   deleteRezervacija(id) {
     return axios.delete(`${constants.API}/rezervacija/${id}`, id);
