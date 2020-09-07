@@ -27,6 +27,12 @@ import TerenComponent from "./components/teren/TerenComponent";
 import DodajTerenComponent from "./components/teren/DodajTerenComponent";
 import IzmeniTerenComponent from "./components/teren/IzmeniTerenComponent";
 
+import KlijentPost from "./components/klijent/KlijentPostComponent";
+import KlijentGetById from "./components/klijent/KlijentGetByIdComponent";
+import KlijentGetAll from "./components/klijent/KlijentGetAllComponent";
+import RacunPost from "./components/racun/RacunPostComponent";
+import RacunGetById from "./components/racun/RacunGetByIdComponent";
+import RacunGetAll from "./components/racun/RacunGetAllComponent";
 import SviPopustiComponent from "./components/popust/SviPopustiComponent";
 import DodajPopustComponent from "./components/popust/DodajPopustComponent";
 import IzmeniPopustComponent from "./components/popust/IzmeniPopustComponent";
@@ -59,7 +65,7 @@ Vue.use(VueToastr);
 const router = new VueRouter({
   mode: "history",
   routes: [
-    { path: '/', component: HomepageComponent},
+    { path: '/', component: HomepageComponent },
     {
       path: "/login",
       component: LoginComponent,
@@ -77,7 +83,6 @@ const router = new VueRouter({
     {
       path: "/lokacije/:id",
       component: LokacijaComponent,
-      beforeEnter: radiULokacijiGuard,
     },
     { path: "/dodajLokaciju", component: DodajLokacijuComponent },
     { path: "/lokacije/edit/:id", component: IzmeniLokacijuComponent },
@@ -109,7 +114,17 @@ const router = new VueRouter({
     { path: "/rezervacije", component: SveRezervacijeComponent },
     { path: "/rezervacije/add", component: DodajRezervacijuComponent },
     { path: "/rezervacije/edit/:id", component: IzmeniRezervacijuComponent },
-    { path: "/rezervacije/:id", component: RezervacijaComponent }
+
+    
+
+
+    { path: "/rezervacije/:id", component: RezervacijaComponent },
+    { path: "/klijent/add", component: KlijentPost },
+    { path: "/klijent/:id", component: KlijentGetById },
+    { path: "/klijent", component: KlijentGetAll },
+    { path: "/racun/add", component: RacunPost },
+    { path: "/racun/:id", component: RacunGetById },
+    { path: "/racun", component: RacunGetAll },
 
   ],
 });
