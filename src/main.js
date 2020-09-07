@@ -6,6 +6,8 @@ import "bootstrap/dist/css/bootstrap.css";
 import "bootstrap-vue/dist/bootstrap-vue.css";
 import VueToastr from "vue-toastr";
 
+import GrupaGetById from "./components/grupa/GrupaGetByIdComponent";
+import GrupaPost from "./components/grupa/GurpaPostComponent";
 import RacunPost from "./components/racun/RacunPostComponent";
 import RacunGetAll from "./components/racun/RacunGetAllComponent";
 import RacunGetById from "./components/racun/RacunGetByIdComponent";
@@ -51,7 +53,6 @@ import DodajRezervacijuComponent from "./components/rezervacija/DodajRezervaciju
 import IzmeniRezervacijuComponent from "./components/rezervacija/IzmeniRezervacijuComponent";
 import RezervacijaComponent from "./components/rezervacija/RezervacijaComponent";
 import HomepageComponent from "./components/HomepageComponent";
-
 // import radiULokacijiGuard from "./guards/radiULokaciji.guard";
 // import jePoslovodjaGuard from "./guards/jePoslovodja.guard";
 
@@ -108,6 +109,8 @@ const router = new VueRouter({
     { path: "/racun/add", component: RacunPost },
     { path: "/racun/:id", component: RacunGetById },
     { path: "/racun", component: RacunGetAll },
+    { path: "/grupa/add", component: GrupaPost },
+    { path: "/grupa/:id", component: GrupaGetById },
   ],
 });
 
