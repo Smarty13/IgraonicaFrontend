@@ -6,10 +6,6 @@ import "bootstrap/dist/css/bootstrap.css";
 import "bootstrap-vue/dist/bootstrap-vue.css";
 import VueToastr from "vue-toastr";
 
-import SveRezervacijeComponent from "./components/rezervacija/SveRezervacijeComponent";
-import DodajRezervacijuComponent from "./components/rezervacija/DodajRezervacijuComponent";
-import IzmeniRezervacijuComponent from "./components/rezervacija/IzmeniRezervacijuComponent";
-import RezervacijaComponent from "./components/rezervacija/RezervacijaComponent";
 import HomepageComponent from "./components/HomepageComponent";
 import UserComponent from "./components/user/UserComponent";
 import LoginComponent from "./components/auth/LoginComponent";
@@ -63,10 +59,7 @@ Vue.use(VueToastr);
 const router = new VueRouter({
   mode: "history",
   routes: [
-    { path: "/rezervacije", component: SveRezervacijeComponent },
-    { path: "/rezervacije/add", component: DodajRezervacijuComponent },
-    { path: "/rezervacije/edit/:id", component: IzmeniRezervacijuComponent },
-    { path: "/rezervacije/:id", component: RezervacijaComponent },
+    { path: '/', component: HomepageComponent},
     {
       path: "/login",
       component: LoginComponent,
