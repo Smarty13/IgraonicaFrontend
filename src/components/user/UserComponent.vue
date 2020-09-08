@@ -32,7 +32,7 @@
 </template>
 <script>
 import UserEditModal from "@/components/user/UserEditModalComponent.vue";
-import RadioU from "@/components/radioU/RadioUGetAllComponent.vue";
+import RadioU from "@/components/radioU/radioUGetAllComponent.vue";
 
 import radiioUService from "../../services/radioU.service";
 import userService from "../../services/user.service";
