@@ -39,7 +39,7 @@
 
         <!-- Logout je uvek tu -->
         <b-navbar-nav v-if="computedPozicija != 'Anoniman'" class="ml-auto">
-          <b-button variant="outline-secondary"><b-icon icon="person-fill" @click="profil"></b-icon> Account</b-button>
+          <b-button @click="profil" variant="outline-secondary" class="mr-2 my-sm-0" size="sm"><b-icon icon="person-fill"></b-icon> Account</b-button>
           <b-button size="sm" class="my-2 my-sm-0" @click="logout()">Logout</b-button>
         </b-navbar-nav>
       </b-collapse>
@@ -65,7 +65,7 @@ export default {
       authService.logout();
     },
     profil(){
-      this.$router.push("/user/"+authService.getUser()["id"]);
+      this.$router.push("/user/" + authService.getUser()["id"]);
     }
   },
   created() {

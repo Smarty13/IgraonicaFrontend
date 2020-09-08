@@ -7,7 +7,8 @@
           <th scope="col">#</th>
           <th scope="col">Ukupno</th>
           <th scope="col">Placeno</th>
-          <th scope="col">datum:</th>
+          <th scope="col">Datum</th>
+          <th scope="col"></th>
         </tr>
       </thead>
       <tbody>

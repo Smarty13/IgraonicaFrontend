@@ -1,7 +1,7 @@
 import Vue from "vue";
 import App from "./App.vue";
 import VueRouter from "vue-router";
-import BootstrapVue from "bootstrap-vue";
+import {BootstrapVue, BootstrapVueIcons} from "bootstrap-vue";
 import "bootstrap/dist/css/bootstrap.css";
 import "bootstrap-vue/dist/bootstrap-vue.css";
 import VueToastr from "vue-toastr";
@@ -61,6 +61,7 @@ Vue.config.productionTip = false;
 Vue.use(VueRouter);
 Vue.use(BootstrapVue);
 Vue.use(VueToastr);
+Vue.use(BootstrapVueIcons);
 
 const router = new VueRouter({
   mode: "history",
