@@ -4,6 +4,9 @@
     <div class="card-header">ID sport: {{ this.$route.params.id }}</div>
     <div class="card-body">
       <h5 class="card-title">{{ sport.naziv }}</h5>
+      Cena po satu: <b>{{sport.cena_po_satu}}din </b>
+
+      <br><br><br>
       
       <a href="#" class="btn btn-primary" @click="izmeniSport(sport.id)">Izmeni</a>
     </div>
@@ -18,7 +21,8 @@ export default{
     data: function(){
         return{
             sport: {
-                naziv: ""
+                naziv: "",
+                cena_po_satu: null
             }
         }
     },

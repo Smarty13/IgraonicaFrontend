@@ -12,7 +12,7 @@
         </tr>
       </thead>
       <tbody>
-        <tr v-for="(k, i) in computedKlijent" :key="k.id">
+        <tr v-for="(k, i) in computedKlijent" :key="k.id" @click="redirekcija(k.id)">
           <th scope="row">{{ i + 1 }}</th>
           <td>{{ k.ime }}</td>
           <td>{{ k.prezime }}</td>
@@ -66,6 +66,9 @@ export default {
       this.showEdit = false;
       this.showDelete = false;
       this.$forceUpdate();
+    },
+    redirekcija(id) {
+      this.$router.push("/klijent/" + id);
     },
   },
   created() {

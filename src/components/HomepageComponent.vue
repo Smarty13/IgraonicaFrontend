@@ -16,7 +16,7 @@ export default {
         console.log(pozicija);
         if(pozicija == "Poslovodja") {
             console.log('poslovodja');
-            this.$router.push('/register');
+            this.$router.push('/lokacije/' + authService.getUser()['lokacija_trenutna_id']);
         } 
         else if (pozicija == "Anoniman") {
             console.log('neaut');
@@ -24,7 +24,7 @@ export default {
         }
         else {
             console.log('radnik')
-            this.$router.push('/pica');
+            this.$router.push('/racun');
         }
     }
 }

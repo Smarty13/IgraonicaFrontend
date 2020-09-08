@@ -22,6 +22,7 @@
           v-bind:class="{ active: r.racun.placeno, 'text-danger': !r.racun.placeno}"
           v-for="(r,i) in computedRezervacije"
           :key="r.id"
+          @click="redirekcija(r.id)"
         >
           <th scope="row">{{ i + 1 }}</th>
           <td>{{ r.teren.naziv }}</td>
@@ -55,10 +56,10 @@ export default {
   },
   methods: {
     dodajRezervaciju() {
-      this.$router.push("/rezervacija/add");
+      this.$router.push("/rezervacije/add");
     },
     izmeniRezervaciju(id) {
-      this.$router.push("/rezervacija/eit/" + id);
+      this.$router.push("/rezervacije/edit/" + id);
     },
     obrisiRezervaciju(id) {
       rezervacijaService
@@ -72,6 +73,9 @@ export default {
         });
     },
     platiRacun(racun_id) {},
+    redirekcija(id) {
+      this.$router.push("/rezervacije/" + id);
+    },
   },
   created() {
     rezervacijaService

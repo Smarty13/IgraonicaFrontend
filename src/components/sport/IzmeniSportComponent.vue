@@ -10,6 +10,10 @@
                         <span class="col-md-6">Naziv sporta</span>
                         <input class="col-md-6 form-control" type="text" v-model="sport.naziv">
                     </div>
+                    <div class="row mb-2">
+                        <span class="col-md-6">Cena po satu</span>
+                        <input class="col-md-6 form-control" type="text" v-model="sport.cena_po_satu">
+                    </div>
                 </div>
                 <div class="footer">
                     <button type="button" class="btn btn-success mr-5"  @click="izmeni">Sacuvaj</button>
@@ -26,7 +30,8 @@ export default {
     data: function(){
         return{
             sport: {
-                naziv: ""
+                naziv: "",
+                cena_po_satu: null
             }
         }
     },
@@ -50,7 +55,7 @@ export default {
     created() {
         sportService.getSportById(this.$route.params.id)
         .then((res) => {
-            this.sport=res['data']
+            this.sport=res['data'];
         })
         .catch((err) => {
             console.log(err);

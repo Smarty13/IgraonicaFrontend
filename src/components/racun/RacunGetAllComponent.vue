@@ -1,18 +1,19 @@
 <template>
-  <div class="container">
-    <button class="btn btn-secondary mt-2 mb-2" @click="addRacun">Dodaj racun</button>
+  <div class="container">   
+    <button class="btn btn-secondary my-2" @click="addRacun">Dodaj racun</button>
     <table class="table text-center table-hover">
       <thead class="thead-dark">
         <tr>
           <th scope="col">#</th>
-          <th scope="col">UKUPNO</th>
-          <th scope="col">PLACENO</th>
-          <th scope="col">DATUM</th>
-          <th scope="col">OPCIJE</th>
+
+          <th scope="col">Ukupno</th>
+          <th scope="col">Placeno</th>
+          <th scope="col">Datum</th>
+          <th scope="col"></th>
         </tr>
       </thead>
       <tbody>
-        <tr v-for="(r, i) in computedRacuni" :key="r.id">
+        <tr v-for="(r, i) in computedRacuni" :key="r.id" @click="redirekcija(r.id)">
           <th scope="row">{{ i + 1 }}</th>
           <td>{{ r.ukupno }}</td>
           <td v-if="r.placeno">Placen</td>
@@ -67,6 +68,9 @@ export default {
     showDeleteModal(id) {
       this.racun = id;
       this.showDelete = true;
+    },
+    redirekcija(id) {
+      this.$router.push("/racun/" + id);
     },
   },
   created() {
