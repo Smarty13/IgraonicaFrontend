@@ -1,6 +1,6 @@
 <template>
   <div class="container">
-    <button class="btn btn-secondary" @click="addKlijent">Dodaj klijenta</button>
+    <button class="btn btn-secondary mt-2 mb-2" @click="addKlijent">Dodaj klijenta</button>
     <table class="table text-center table-hover">
       <thead class="thead-dark">
         <tr>
@@ -8,6 +8,7 @@
           <th scope="col">IME</th>
           <th scope="col">PREZIME</th>
           <th scope="col">KONTAKT</th>
+          <th scope="col">OPCIJE</th>
         </tr>
       </thead>
       <tbody>

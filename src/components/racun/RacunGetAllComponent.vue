@@ -1,10 +1,11 @@
 <template>
-  <div class="container">
+  <div class="container">   
     <button class="btn btn-secondary my-2" @click="addRacun">Dodaj racun</button>
     <table class="table text-center table-hover">
       <thead class="thead-dark">
         <tr>
           <th scope="col">#</th>
+
           <th scope="col">Ukupno</th>
           <th scope="col">Placeno</th>
           <th scope="col">Datum</th>
