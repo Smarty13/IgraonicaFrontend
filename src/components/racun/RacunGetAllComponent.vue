@@ -1,6 +1,6 @@
 <template>
   <div class="container">   
-    <button class="btn btn-secondary my-2" @click="addRacun">Dodaj racun</button>
+    <button class="btn btn-secondary my-2" @click="postRacun">Dodaj racun</button>
     <table class="table text-center table-hover">
       <thead class="thead-dark">
         <tr>
@@ -72,6 +72,22 @@ export default {
     redirekcija(id) {
       this.$router.push("/racun/" + id);
     },
+        postRacun() {
+      racunService
+        .postRacun({ukupno: 0,placeno: false})
+        .then((rez) => {
+          this.$router.push("/racun/" +rez["data"]["id"]);
+          this.$toastr.s("Racun uspesno dodat.", "SUCCESS, Racun dodat!");
+        })
+        .catch((err) => {
+          console.log(err);
+          this.$toastr.e(
+            "Greska pri dodavanju novog racuna.",
+            "ERROR. Neuspesno dodavanje."
+          );
+        });
+      this.$router.push({ path: "/racun" });
+    }
   },
   created() {
     racunService

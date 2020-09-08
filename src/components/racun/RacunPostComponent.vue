@@ -53,9 +53,8 @@ export default {
   data: function() {
     return {
       racun: {
-        ukupno: "",
-        placeno: false,
-        kontakt: "",
+        ukupno: 0,
+        placeno: false
       },
     };
   },

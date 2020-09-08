@@ -17,7 +17,7 @@
         <tr v-for="p in computedPica" :key="p.id" @click="redirekcija(p.id)">
           <th scope="row">{{ p.id }}</th>
           <td>{{ p.Naziv_Pica }}</td>
-          <td>{{ p.Cena_Pica }}</td>
+          <td>{{ p.Cena_Pica }} din</td>
           <td>
             <button class="btn btn-success btn-sm" @click="izmeniPice(p.id)">Izmeni</button>
             <button class="btn btn-danger btn-sm ml-1" @click="obrisiPice(p.id)">Obrisi</button>

@@ -24,10 +24,10 @@
         <!-- Meni za ostale -->
         <b-navbar-nav v-else>
 
-          <b-nav-item href="#">Klijenti</b-nav-item>
+          <b-nav-item href="klijent">Klijenti</b-nav-item>
           <b-nav-item href="/pica">Pića</b-nav-item>
           <b-nav-item href="/popusti">Popusti</b-nav-item>
-          <b-nav-item href="/rezervacije">Rezervacije</b-nav-item>
+          <!--b-nav-item href="/rezervacije">Rezervacije</b-nav-item-->
           <b-nav-item href="/racun">Racuni</b-nav-item>
           <b-nav-item href="/grupa">Grupe</b-nav-item>
           <b-nav-item href="/sportovi">Sportovi</b-nav-item>

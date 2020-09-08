@@ -40,7 +40,7 @@ export default {
         dodaj() {
             piceService.addPice(this.pice)
             .then((res) => {
-                this.$toastr.s ('Pice ${res.data.Naziv_Pica} je dodato.', "Pice dodato!");
+                this.$toastr.s ('Pice je dodato.', "Pice dodato!");
                 this.$router.go('/');
             })
             .catch((err) => {
