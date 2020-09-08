@@ -1,6 +1,6 @@
 <template>
   <div class="container">
-    <button class="btn btn-secondary" @click="addPojedinac">Dodaj pojedinca</button>
+    <button class="btn btn-secondary mt-2 mb-2" @click="addPojedinac">Dodaj pojedinca</button>
     <table class="table text-center table-hover">
       <thead class="thead-dark">
         <tr>

@@ -1,6 +1,6 @@
 <template>
   <div class="container">
-    <button class="btn btn-secondary" @click="addGrupa">Dodaj grupu</button>
+    <button class="btn btn-secondary mt-2 mb-2" @click="addGrupa">Dodaj grupu</button>
     <table class="table text-center table-hover">
       <thead class="thead-dark">
         <tr>
@@ -19,10 +19,9 @@
           <td>{{ g.klijent.ime }}</td>
           <td>{{ g.klijent.prezime }}</td>
           <td>{{ g.klijent.kontakt }}</td>
-
           <td>
-            <button @click="showEditModal(r)" class="btn btn-warning mr-3">Izmeni</button>
-            <button @click="showDeleteModal(r)" class="btn btn-danger">Obrisi</button>
+            <button @click="showEditModal(g)" class="btn btn-warning mr-3">Izmeni</button>
+            <button @click="showDeleteModal(g)" class="btn btn-danger">Obrisi</button>
           </td>
         </tr>
       </tbody>
@@ -60,7 +59,6 @@ export default {
     hideModal() {
       this.showEdit = false;
       this.showDelete = false;
-      this.$forceUpdate();
     },
     showEditModal(id) {
       this.grupa = id;
@@ -76,6 +74,7 @@ export default {
       .getAll()
       .then((res) => {
         this.grupe = res["data"];
+        console.log(this.grupe);
       })
       .catch((err) => {
         this.$toastr("ERROR in getting data.", "Niz grupa nedostupan!");

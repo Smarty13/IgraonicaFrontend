@@ -41,6 +41,7 @@ export default {
   methods: {
     hideModalDelete() {
       this.showDelete = false;
+      this.$router.go("/klijent");
     },
     hideModalEdit() {
       this.showEdit = false;
