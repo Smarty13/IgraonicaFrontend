@@ -10,7 +10,7 @@
           <th scope="col">Naziv</th>
           <th scope="col">Sport</th>
           <th scope="col">Lokacija</th>
-          <th scope="col"></th>
+          <th scope="col">Opcije</th>
         </tr>
       </thead>
       <tbody>

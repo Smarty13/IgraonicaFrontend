@@ -9,6 +9,7 @@
           <th scope="col">#</th>
           <th scope="col">Naziv</th>
           <th scope="col">Postanski kod</th>
+          <th scope="col">Opcije</th>
         </tr>
       </thead>
       <tbody>

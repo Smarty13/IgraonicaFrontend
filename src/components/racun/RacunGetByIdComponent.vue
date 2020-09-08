@@ -10,18 +10,10 @@
           <p class="card-text text-white">
             Datum kreiranja: {{ racun.created_at }}
           </p>
-          <a href="#" @click="showEditModal" class="btn btn-warning mr-5"
-            >Izmeni</a
-          >
+
           <a href="#" @click="showDeleteModal" class="btn btn-danger">Obrisi</a>
         </div>
-        <div v-if="showEdit">
-          <RacunEditModal
-            :showMe="showEdit"
-            :racun="racun"
-            @closeModal="hideModalEdit()"
-          />
-        </div>
+        
         <div v-if="showDelete">
           <RacunDeleteModal
             :showMe="showDelete"
@@ -50,7 +42,6 @@
   </div>
 </template>
 <script>
-import RacunEditModal from "@/components/racun/RacunEditModalComponent.vue";
 import RacunDeleteModal from "@/components/racun/RacunDeleteModalComponent.vue";
 import racunService from "../../services/racun.service";
 import popustService from '../../services/popust.service';
@@ -60,7 +51,6 @@ import PicaComponent from "./PicaComponent";
 
 export default {
   components: {
-    RacunEditModal,
     RacunDeleteModal,
     PicaComponent
   },
@@ -74,9 +64,6 @@ export default {
     };
   },
   methods: {
-    showEditModal() {
-      this.showEdit = true;
-    },
     showDeleteModal() {
       this.showDelete = true;
     },
@@ -84,10 +71,7 @@ export default {
       this.showDelete = false;
       this.$router.push({ path: "/racun" });
     },
-    hideModalEdit() {
-      this.showEdit = false;
-      this.$forceUpdate();
-    },
+
     plati() {
       const data = {
         ukupno: this.racun.ukupno,
@@ -103,15 +87,18 @@ export default {
           popust_id: this.forma_popust.id,
           racun_id: this.racun.id
         };
-        console.log(rp)
-        racunPopustService.addRacunPopust(rp)
-        .then((res) => {
-          this.$toastr.s('Racun uspesno placen.', 'Racun placen.');
+        if(this.forma_popust.vrednost_popust != 0) {
+          racunPopustService.addRacunPopust(rp)
+          .then((res) => {
+            this.$toastr.s('Racun uspesno placen.', 'Racun placen.');
+            this.$router.go('/');
+          })
+          .catch((err) => {
+            this.$toastr.e('Dodavanje poputa nije uspelo', 'Greska');
+          });
+        } else {
           this.$router.go('/');
-        })
-        .catch((err) => {
-          this.$toastr.e('Dodavanje poputa nije uspelo', 'Greska');
-        });
+        }
       })
       .catch((err) => {
         this.$toastr.e('Racun nije placen', 'Greska');
