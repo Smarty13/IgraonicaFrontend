@@ -19,11 +19,11 @@
           ></b-form-input>
         </b-form-group>
 
-        <b-form-group id="input-group-2" label="Prezime:" label-for="input-2">
+        <b-form-group id="input-group-2" label="Opis:" label-for="input-2">
           <b-form-textarea id="textarea" v-model="$props.grupa.opis" rows="3" max-rows="6" required></b-form-textarea>
         </b-form-group>
 
-        <b-form-group :key="reRender" id="input-group-3" label="Klijent:" label-for="input-3">
+        <b-form-group id="input-group-3" label="Klijent:" label-for="input-3">
           <p>Ime: {{$props.grupa.klijent.ime}}</p>
           <p>Prezime: {{$props.grupa.klijent.prezime}}</p>
           <p>kontakt: {{$props.grupa.klijent.kontakt}}</p>
@@ -51,8 +51,12 @@ export default {
   data: function () {
     return {
       showModal: false,
+      grupaData: {
+        naziv: null,
+        opis: null,
+        klijent_id: null,
+      },
       klijent: null,
-      reRender: 0,
     };
   },
   methods: {
@@ -60,9 +64,9 @@ export default {
       this.$emit("closeModal");
     },
     hideModalKlijenti(selectedKlijent) {
-      this.reRender += 1;
       this.showModal = false;
       this.grupa.klijent_id = selectedKlijent.id;
+      console.log("grupa logger", this.grupaData);
     },
     postGrupa() {
       grupaService

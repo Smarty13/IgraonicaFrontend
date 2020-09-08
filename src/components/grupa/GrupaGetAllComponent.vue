@@ -27,10 +27,10 @@
       </tbody>
     </table>
     <div v-if="showEdit">
-      <GrupaEditModal :showMe="showEdit" :racun="racun" @closeModal="hideModal()" />
+      <GrupaEditModal :showMe="showEdit" :grupa="grupa" @closeModal="hideModal()" />
     </div>
     <div v-if="showDelete">
-      <GrupaDeleteModal :showMe="showDelete" :racun="racun" @closeModal="hideModal()" />
+      <GrupaDeleteModal :showMe="showDelete" :grupa="grupa" @closeModal="hideModal()" />
     </div>
   </div>
 </template>
