@@ -1,10 +1,16 @@
 <template>
-  <div>
-      <h3>Login</h3>
-      <p>Email: <input type="text" v-model="korisnik.email"></p>
-      <p>Password: <input type="password" v-model="korisnik.password"></p>
-      <button class="btn btn-success btn-large" @click="callLogin">Login</button>
+  <div class="d-flex justify-content-center" style="height:100%">
+    <div>
+      <p></p>
+      <div>
+        <p></p>
+          <h3>Login</h3>
+          <p>Email: <input type="text" v-model="korisnik.email"></p>
+          <p>Password: <input type="password" v-model="korisnik.password"></p>
+          <button class="btn btn-success btn-large" @click="callLogin">Login</button>
 
+      </div>
+    </div>
   </div>
 </template>
 

@@ -12,7 +12,7 @@
           <b-nav-item href="/tereni">Tereni</b-nav-item>
           <b-nav-item href="/klijent">Klijenti</b-nav-item>
           <b-nav-item href="/sportovi">Sportovi</b-nav-item>
-          <b-nav-item href="/termini">Termini</b-nav-item>
+          <!--b-nav-item href="/termini">Termini</b-nav-item-->
           <b-nav-item href="/pozicije">Pozicije</b-nav-item>
 
         </b-navbar-nav>
@@ -32,7 +32,7 @@
           <b-nav-item href="/grupa">Grupe</b-nav-item>
           <b-nav-item href="/sportovi">Sportovi</b-nav-item>
           <b-nav-item href="/tereni">Tereni</b-nav-item>
-          <b-nav-item href="/termni">Termini</b-nav-item>
+          <!--b-nav-item href="/termni">Termini</b-nav-item-->
 
 
         </b-navbar-nav>
