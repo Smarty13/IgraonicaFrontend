@@ -23,8 +23,8 @@
           <b-form-textarea id="textarea" v-model="$props.grupa.opis" rows="3" max-rows="6" required></b-form-textarea>
         </b-form-group>
 
-        <b-form-group id="input-group-3" label="Klijent:" label-for="input-3">
-          <p :key="reRender">Ime: {{$props.grupa.klijent.ime}}</p>
+        <b-form-group :key="reRender" id="input-group-3" label="Klijent:" label-for="input-3">
+          <p>Ime: {{$props.grupa.klijent.ime}}</p>
           <p>Prezime: {{$props.grupa.klijent.prezime}}</p>
           <p>kontakt: {{$props.grupa.klijent.kontakt}}</p>
         </b-form-group>
@@ -60,7 +60,7 @@ export default {
       this.$emit("closeModal");
     },
     hideModalKlijenti(selectedKlijent) {
-      this.reRender = +1;
+      this.reRender += 1;
       this.showModal = false;
       this.grupa.klijent_id = selectedKlijent.id;
     },

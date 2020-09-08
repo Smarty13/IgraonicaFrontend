@@ -2,8 +2,13 @@ import axios from "../axios";
 import constants from "../constants";
 
 export default {
-  getAll() {
-    return axios.get(`${constants.API}/radioU`);
+  getAllForUser(id) {
+    return axios.get(`${constants.API}/radioU/forUser/${id}`);
   },
-  //   postRadio(radio_id, radio_do, user_id, pozicija_id)
+  postRadioU(data) {
+    return axios.post(`${constants.API}/radioU`, data);
+  },
+  putRadioU(data, id) {
+    return axios.put(`${constants.API}/radioU/update/${id}`, data);
+  },
 };

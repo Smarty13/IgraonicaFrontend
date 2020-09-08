@@ -6,6 +6,10 @@ import "bootstrap/dist/css/bootstrap.css";
 import "bootstrap-vue/dist/bootstrap-vue.css";
 import VueToastr from "vue-toastr";
 
+import PojedinacGetAll from "./components/pojedinac/PojedinacGetAllComponent";
+import PojedinacPost from "./components/pojedinac/PojedinacPostComponent";
+import PojedinacGetById from "./components/pojedinac/PojedinacGetByIdComponent";
+import GrupaGetAll from "./components/grupa/GrupaGetAllComponent";
 import GrupaGetById from "./components/grupa/GrupaGetByIdComponent";
 import GrupaPost from "./components/grupa/GurpaPostComponent";
 import RacunPost from "./components/racun/RacunPostComponent";
@@ -14,7 +18,6 @@ import RacunGetById from "./components/racun/RacunGetByIdComponent";
 import KlijentGetByIdComponent from "./components/klijent/KlijentGetByIdComponent";
 import KlijentPostComponent from "./components/klijent/KlijentPostComponent";
 import KlijentAllComponent from "./components/klijent/KlijentGetAllComponent";
-import radioUComponent from "./components/radioU/radioUGetAllComponent";
 import LoginComponent from "./components/auth/LoginComponent";
 import RegisterComponent from "./components/auth/RegisterComponent";
 import SveLokacijeComponent from "./components/lokacije/SveLokacijeComponent";
@@ -101,7 +104,6 @@ const router = new VueRouter({
     { path: "/rezervacije/add", component: DodajRezervacijuComponent },
     { path: "/rezervacije/edit/:id", component: IzmeniRezervacijuComponent },
     { path: "/rezervacije/:id", component: RezervacijaComponent },
-    { path: "/radioU", component: radioUComponent },
     { path: "/klijent", component: KlijentAllComponent },
     { path: "/klijent/add", component: KlijentPostComponent },
     { path: "/klijent/:id", component: KlijentGetByIdComponent },
@@ -109,8 +111,12 @@ const router = new VueRouter({
     { path: "/racun/add", component: RacunPost },
     { path: "/racun/:id", component: RacunGetById },
     { path: "/racun", component: RacunGetAll },
+    { path: "/grupa", component: GrupaGetAll },
     { path: "/grupa/add", component: GrupaPost },
     { path: "/grupa/:id", component: GrupaGetById },
+    { path: "/pojedinac", component: PojedinacGetAll },
+    { path: "/pojedinac/add", component: PojedinacPost },
+    { path: "/pojedinac/:id", component: PojedinacGetById },
   ],
 });
 

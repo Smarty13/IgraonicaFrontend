@@ -1,49 +1,50 @@
 <template>
   <div class="d-flex justify-content-center" style="height:100%">
     <div class="w-md-50">
-
       <h3 class="display-4 mb-5">Novi zaposleni</h3>
       <div class="container">
         <div class="row mb-2">
           <span class="col-md-6">Ime:</span>
-          <input class="col-md-6 form-control" type="text" v-model="korisnik.ime">
+          <input class="col-md-6 form-control" type="text" v-model="korisnik.ime" />
         </div>
         <div class="row mb-2">
-          <span class="col-md-6">Prezime:</span> 
-          <input class="col-md-6 form-control" type="text" v-model="korisnik.prezime">
+          <span class="col-md-6">Prezime:</span>
+          <input class="col-md-6 form-control" type="text" v-model="korisnik.prezime" />
         </div>
         <div class="row mb-2">
-          <span class="col-md-6">Email:</span> 
-          <input class="col-md-6 form-control" type="email" v-model="korisnik.email">
+          <span class="col-md-6">Email:</span>
+          <input class="col-md-6 form-control" type="email" v-model="korisnik.email" />
         </div>
         <div class="row mb-2">
-          <span class="col-md-6">Šifra:</span> 
-          <input class="col-md-6 form-control" type="password" v-model="korisnik.password">
+          <span class="col-md-6">Šifra:</span>
+          <input class="col-md-6 form-control" type="password" v-model="korisnik.password" />
         </div>
         <div class="row mb-2">
-          <span class="col-md-6">Potvrda šifre:</span> 
-          <input class="col-md-6 form-control" type="password" v-model="korisnik.confirmPassword">
+          <span class="col-md-6">Potvrda šifre:</span>
+          <input class="col-md-6 form-control" type="password" v-model="korisnik.confirmPassword" />
         </div>
         <div class="row mb-2">
-          <span class="col-md-6">Broj telefona:</span> 
-          <input class="col-md-6 form-control" type="text" v-model="korisnik.broj_telefona">
+          <span class="col-md-6">Broj telefona:</span>
+          <input class="col-md-6 form-control" type="text" v-model="korisnik.broj_telefona" />
         </div>
         <div class="row mb-2">
-          <span class="col-md-6">JMBG:</span> 
-          <input class="col-md-6 form-control" type="text" v-model="korisnik.jmbg">
+          <span class="col-md-6">JMBG:</span>
+          <input class="col-md-6 form-control" type="text" v-model="korisnik.jmbg" />
         </div>
         <div class="row mb-2">
-          <span class="col-md-6">Pozicija: </span>
+          <span class="col-md-6">Pozicija:</span>
           <select class="col-md-6 form-control" v-model="korisnik.pozicija_trenutna_id">
-            <option v-for="p in computedPozicije" :key="p.id"
-            v-bind:value="p.id"> {{p.naziv}} </option>
+            <option v-for="p in computedPozicije" :key="p.id" v-bind:value="p.id">{{p.naziv}}</option>
           </select>
         </div>
         <div class="row mb-5">
-          <span class="col-md-6">Lokacija: </span>
+          <span class="col-md-6">Lokacija:</span>
           <select class="col-md-6 form-control" v-model="korisnik.lokacija_trenutna_id">
-            <option v-for="l in computedLokacije" :key="l.id"
-            v-bind:value="l.id"> {{l.naziv}}, {{l.grad.naziv}} </option>
+            <option
+              v-for="l in computedLokacije"
+              :key="l.id"
+              v-bind:value="l.id"
+            >{{l.naziv}}, {{l.grad.naziv}}</option>
           </select>
         </div>
         <div class="d-flex justify-content-center">
@@ -55,12 +56,13 @@
 </template>
 
 <script>
-import authenticationService from '../../services/authentication.service';
-import pozicijaService from '../../services/pozicija.service';
-import lokacijaService from '../../services/lokacija.service';
+import authenticationService from "../../services/authentication.service";
+import pozicijaService from "../../services/pozicija.service";
+import lokacijaService from "../../services/lokacija.service";
+import radioUService from "../../services/radioU.service";
 
 export default {
-  data: function (){
+  data: function () {
     return {
       korisnik: {
         ime: "Test",
@@ -71,27 +73,57 @@ export default {
         broj_telefona: "066666",
         jmbg: "2134123123",
         pozicija_trenutna_id: 1,
-        lokacija_trenutna_id: 1
+        lokacija_trenutna_id: 1,
+      },
+      radio: {
+        radio_od: null,
+        radio_do: null,
+        user_id: null,
+        lokacija_id: null,
+        pozicija_id: null,
       },
       pozicije: [],
-      lokacije: []
-    }
+      lokacije: [],
+    };
   },
   methods: {
     callRegister: function () {
       console.log(this.korisnik);
-      if(this.korisnik.password === this.korisnik.confirmPassword){
-        authenticationService.register(this.korisnik)
-        .then((res) => {
-          this.$toastr.s(`Zaposleni ${res.data.ime} ${res.data.prezime} dodat.`, "Zaposleni dodat!")
-        })
-        .catch((err)=> {
-          this.$toastr.e(err.message, "Greška");
-        });
+      if (this.korisnik.password === this.korisnik.confirmPassword) {
+        authenticationService
+          .register(this.korisnik)
+          .then((res) => {
+            this.$toastr.s(
+              `Zaposleni ${res.data.ime} ${res.data.prezime} dodat.`,
+              "Zaposleni dodat!"
+            );
+
+            this.radio.user_id = res.data.id;
+            this.radio.lokacija_id = res.data.lokacija_trenutna_id;
+            this.radio.pozicija_id = res.data.pozicija_trenutna_id;
+            this.radio.radio_od = new Date()
+              .toJSON()
+              .slice(0, 10)
+              .replace(/-/g, "-");
+            this.radio.radio_do = new Date()
+              .toJSON()
+              .slice(0, 10)
+              .replace(/-/g, "-");
+            console.log("radio", this.radio_od);
+            console.log("neradio", this.radio_do);
+
+            radioUService.postRadioU(this.radio).then((res) => {
+              this.$toastr.s("Zaposlenje potvrdjeno", "Logged!");
+            });
+            console.log("radio user id", this.radio);
+          })
+          .catch((err) => {
+            this.$toastr.e(err.message, "Greška");
+          });
       } else {
         this.$toastr.e("Šifra i potvrda šifre se ne slažu", "Greška!");
       }
-    }
+    },
   },
   computed: {
     computedLokacije() {
@@ -99,29 +131,29 @@ export default {
     },
     computedPozicije() {
       return this.pozicije;
-    }
+    },
   },
   created() {
-    lokacijaService.getAllLokacija()
-    .then((res) => {
-      this.lokacije = res['data'];
-      console.log(res);
-      pozicijaService.getAllPozicija()
+    lokacijaService
+      .getAllLokacija()
       .then((res) => {
-        this.pozicije = res['data'];
+        this.lokacije = res["data"];
+        console.log(res);
+        pozicijaService
+          .getAllPozicija()
+          .then((res) => {
+            this.pozicije = res["data"];
+          })
+          .catch((err) => {
+            console.log(err);
+          });
       })
-      .catch((err)=> {
+      .catch((err) => {
         console.log(err);
       });
-    })
-    .catch((err)=> {
-      console.log(err);
-    });
-  }
-
-}
+  },
+};
 </script>
 
 <style>
-  
 </style>

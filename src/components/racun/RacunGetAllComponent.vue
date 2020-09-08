@@ -1,15 +1,14 @@
 <template>
   <div class="container">
-    <button class="btn btn-secondary" @click="addRacun">
-      Dodaj racun
-    </button>
+    <button class="btn btn-secondary" @click="addRacun">Dodaj racun</button>
     <table class="table text-center table-hover">
       <thead class="thead-dark">
         <tr>
           <th scope="col">#</th>
-          <th scope="col">Ukupno</th>
-          <th scope="col">Placeno</th>
-          <th scope="col">datum:</th>
+          <th scope="col">UKUPNO</th>
+          <th scope="col">PLACENO</th>
+          <th scope="col">DATUM</th>
+          <th scope="col">OPCIJE</th>
         </tr>
       </thead>
       <tbody>
@@ -20,29 +19,17 @@
           <td v-else>Nije placen</td>
           <td>{{ r.created_at }}</td>
           <td>
-            <button @click="showEditModal(r)" class="btn btn-warning mr-3">
-              Izmeni
-            </button>
-            <button @click="showDeleteModal(r)" class="btn btn-danger">
-              Obrisi
-            </button>
+            <button @click="showEditModal(r)" class="btn btn-warning mr-3">Izmeni</button>
+            <button @click="showDeleteModal(r)" class="btn btn-danger">Obrisi</button>
           </td>
         </tr>
       </tbody>
     </table>
     <div v-if="showEdit">
-      <RacunEditModal
-        :showMe="showEdit"
-        :racun="racun"
-        @closeModal="hideModal()"
-      />
+      <RacunEditModal :showMe="showEdit" :racun="racun" @closeModal="hideModal()" />
     </div>
     <div v-if="showDelete">
-      <RacunDeleteModal
-        :showMe="showDelete"
-        :racun="racun"
-        @closeModal="hideModal()"
-      />
+      <RacunDeleteModal :showMe="showDelete" :racun="racun" @closeModal="hideModal()" />
     </div>
   </div>
 </template>
@@ -56,7 +43,7 @@ export default {
     RacunEditModal,
     RacunDeleteModal,
   },
-  data: function() {
+  data: function () {
     return {
       showEdit: false,
       showDelete: false,

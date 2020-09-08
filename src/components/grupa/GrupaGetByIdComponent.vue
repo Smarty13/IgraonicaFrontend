@@ -48,6 +48,7 @@ export default {
   methods: {
     hideModalDelete() {
       this.showDelete = false;
+      this.$router.push({ path: "/grupa" });
     },
     hideModalEdit() {
       this.showEdit = false;
